@@ -14,6 +14,8 @@ const CharacterList = styled.ul`
 `;
 const CharacterItem = styled.li`
     width: calc(50% - 8px);
+    cursor: pointer;
+
     .center {
         text-align: center;
     }
@@ -25,6 +27,7 @@ const CharacterBox = styled.figure<characterProps>`
     width: ${(props) => (props.$width ? props.$width : '100%')};
     height: 180px;
     border-radius: 20px;
+    border: 3px solid #efefef;
     background-color: #efefef;
     margin-bottom: 8px;
     color: #777;
@@ -33,6 +36,10 @@ const CharacterBox = styled.figure<characterProps>`
     justify-content: center;
     align-items: center;
     line-height: 1.6;
+
+    &:hover {
+        border: 3px solid #90ee90;
+    }
 `;
 
 const InputStyle = styled.input`
@@ -92,7 +99,7 @@ const GameCreate = () => {
                 </CharacterItem>
             </CharacterList>
             {/* <Button onClick={onClickHandler}>캐릭터 생성</Button> */}
-            <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+            <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'캐릭터 생성'}>
                 <Form action="" onSubmit={onSubmitHandler}>
                     {characterIndex === 1 ? <Character1 /> : <Character2 />}
                     <InputStyle

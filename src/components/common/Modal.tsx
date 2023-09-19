@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import { XmarkIcon } from '../../assets/icons/SVG';
 const OverlayBG = styled.div`
     position: fixed;
     top: 0;
@@ -48,20 +49,30 @@ const ModalCloseButton = styled.button`
     width: 36px;
     height: 36px;
     border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     right: 0;
     background-color: #90ee90;
     cursor: pointer;
+    svg {
+        transform: scale(1.2);
+        path {
+            fill: green;
+        }
+    }
 `;
 
 type modalProps = {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     children: ReactNode;
+    actionTitle: string;
     onClickEvent?: () => void;
 };
 
-const Modal = ({ isOpen, setIsOpen, children, onClickEvent }: modalProps) => {
+const Modal = ({ isOpen, setIsOpen, actionTitle, children, onClickEvent }: modalProps) => {
     const onClickCloseHandler = (event: React.MouseEvent) => {
         event.stopPropagation();
         setIsOpen(!isOpen);
@@ -73,8 +84,10 @@ const Modal = ({ isOpen, setIsOpen, children, onClickEvent }: modalProps) => {
                     <OverlayBG>
                         <ModalBox>
                             <ModalHeader>
-                                <ModalTitle>캐릭터 생성</ModalTitle>
-                                <ModalCloseButton onClick={onClickCloseHandler}></ModalCloseButton>
+                                <ModalTitle>{actionTitle}</ModalTitle>
+                                <ModalCloseButton onClick={onClickCloseHandler}>
+                                    <XmarkIcon />
+                                </ModalCloseButton>
                             </ModalHeader>
                             {children}
                         </ModalBox>
