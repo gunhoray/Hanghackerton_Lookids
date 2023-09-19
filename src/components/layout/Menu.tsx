@@ -28,19 +28,22 @@ const Menu = () => {
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
-                                <MissionText $width={'calc(100% - 52px)'}>캐릭터 수첩</MissionText>
+                                <MissionText>캐릭터 수첩</MissionText>
+                                <MissionButton>바로가기</MissionButton>
                             </div>
                         </MissionItem>
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
-                                <MissionText $width={'calc(100% - 52px)'}>공지사항</MissionText>
+                                <MissionText>공지사항</MissionText>
+                                <MissionButton>바로가기</MissionButton>
                             </div>
                         </MissionItem>
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
-                                <MissionText $width={'calc(100% - 52px)'}>로그아웃</MissionText>
+                                <MissionText>로그아웃</MissionText>
+                                <MissionButton>바로가기</MissionButton>
                             </div>
                         </MissionItem>
                     </MissionList>
