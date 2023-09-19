@@ -4,6 +4,7 @@ import AccessThreeReward from '../components/game/AccessThreeReward';
 import WaterReward from '../components/game/WaterReward';
 import { Heart } from '../assets/icons/GameIcon';
 import Menu from '../components/layout/Menu';
+import LevelUp from '../components/game/LevelUp';
 const TestPage = () => {
     return (
         <div>
@@ -12,6 +13,7 @@ const TestPage = () => {
             <WaterReward />
             <Menu />
             <Heart />
+            <LevelUp />
         </div>
     );
 };
