@@ -33,8 +33,8 @@ const linkList = [
         route: '/game',
     },
     {
-        name: '스타일관',
-        route: '/',
+        name: 'test',
+        route: '/test',
     },
     {
         name: '올마트',

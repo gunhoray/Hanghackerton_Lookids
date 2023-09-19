@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import Button from './Button';
+import { XmarkIcon } from '../../assets/icons/SVG';
 const OverlayBG = styled.div`
     position: fixed;
     top: 0;
@@ -17,11 +17,15 @@ const OverlayBG = styled.div`
 `;
 
 const ModalBox = styled.div`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #fff;
     max-width: 330px;
     width: 90%;
     min-height: 30vh;
-    padding: 30px 16px;
+    padding: 30px 24px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -29,12 +33,30 @@ const ModalBox = styled.div`
     align-items: center;
     gap: 16px;
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.2;
+    z-index: 1000;
+
+    .explanation {
+        font-size: 12px;
+        color: #777;
+        line-height: 1.6;
+    }
+    .time {
+        font-size: 10px;
+        color: #777;
+    }
 `;
 const ModalHeader = styled.div`
+    width: 100%;
+    height: 40px;
     display: flex;
+    justify-content: space-between;
+    position: relative;
 `;
 const ModalTitle = styled.p`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 20px;
 `;
 
@@ -42,33 +64,50 @@ const ModalCloseButton = styled.button`
     width: 36px;
     height: 36px;
     border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
     background-color: #90ee90;
+    cursor: pointer;
+    svg {
+        transform: scale(1.2);
+        path {
+            fill: green;
+        }
+    }
 `;
 
 type modalProps = {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     children: ReactNode;
-    onClickEvent: () => void;
+    actionTitle: string;
+    onClickEvent?: () => void;
 };
 
-const Modal = ({ isOpen, setIsOpen, children, onClickEvent }: modalProps) => {
-    const onClickCloseHandler = () => {
+const Modal = ({ isOpen, setIsOpen, actionTitle, children, onClickEvent }: modalProps) => {
+    const onClickCloseHandler = (event: React.MouseEvent) => {
+        event.stopPropagation();
         setIsOpen(!isOpen);
     };
     return (
         <>
             {isOpen &&
                 ReactDOM.createPortal(
-                    <OverlayBG onClick={onClickCloseHandler}>
+                    <>
+                        <OverlayBG onClick={onClickCloseHandler}></OverlayBG>
                         <ModalBox>
                             <ModalHeader>
-                                <ModalTitle></ModalTitle>
-                                <ModalCloseButton></ModalCloseButton>
+                                <ModalTitle>{actionTitle}</ModalTitle>
+                                <ModalCloseButton onClick={onClickCloseHandler}>
+                                    <XmarkIcon />
+                                </ModalCloseButton>
                             </ModalHeader>
                             {children}
                         </ModalBox>
-                    </OverlayBG>,
+                    </>,
                     document.getElementById('modal-root') as HTMLDivElement
                 )}
         </>
