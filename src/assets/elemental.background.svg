@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.8.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.5;fill:url(#SVGID_1_);}
+	.st1{opacity:0.5;fill:url(#SVGID_00000110429620462383044160000011792331737451091110_);}
+	.st2{opacity:0.5;fill:url(#SVGID_00000135665101395130162300000003922567411147410865_);}
+</style>
+<g>
+	<radialGradient id="SVGID_1_" cx="569.6052" cy="333.9949" r="308.317" gradientUnits="userSpaceOnUse">
+		<stop  offset="0.3313" style="stop-color:#FFFFFF;stop-opacity:0.7"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0.1"/>
+	</radialGradient>
+	<ellipse class="st0" cx="569.6" cy="334" rx="312.2" ry="304.4"/>
+	
+		<radialGradient id="SVGID_00000147926223260999096900000009333099252296704932_" cx="323.9193" cy="684.4197" r="213.0388" gradientUnits="userSpaceOnUse">
+		<stop  offset="0.3313" style="stop-color:#FFFFFF;stop-opacity:0.7"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0.1"/>
+	</radialGradient>
+	
+		<ellipse style="opacity:0.5;fill:url(#SVGID_00000147926223260999096900000009333099252296704932_);" cx="323.9" cy="684.4" rx="215.7" ry="210.3"/>
+	
+		<radialGradient id="SVGID_00000101797654938346041610000007921481796906339742_" cx="653.5687" cy="738.1229" r="235.2724" gradientUnits="userSpaceOnUse">
+		<stop  offset="0.3313" style="stop-color:#FFFFFF;stop-opacity:0.7"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0.1"/>
+	</radialGradient>
+	
+		<ellipse style="opacity:0.5;fill:url(#SVGID_00000101797654938346041610000007921481796906339742_);" cx="653.6" cy="738.1" rx="238.2" ry="232.3"/>
+</g>
+</svg>
