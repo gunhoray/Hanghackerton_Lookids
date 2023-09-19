@@ -110,12 +110,75 @@ const BottomSheetBoxTitle = styled.p`
     margin-top: 10px;
 `;
 
+type styleColor = {
+    $color: string;
+};
+
+export const MissionList = styled.ul<styleColor>`
+    width: 100%;
+    --hover-color: ${(props) => props.$color + '50'};
+    --color: ${(props) => props.$color || '#bbf3ff'};
+`;
+export const MissionItem = styled.li`
+    width: 100%;
+    padding: 0.4rem 0;
+    border-bottom: 2px solid #efefef;
+    color: #777;
+    .mission-item-inner {
+        padding: 0 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+    }
+    &:hover {
+        background-color: var(--hover-color);
+    }
+`;
+export const MissionIcon = styled.span`
+    background-color: var(--color);
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+type styleProps = {
+    $width?: string;
+};
+
+export const MissionText = styled.p<styleProps>`
+    width: ${(props) => (props.$width ? props.$width : 'calc(100% - 140px)')};
+    text-align: start;
+`;
+export const MissionButton = styled.button`
+    font-size: 0.9rem;
+    /* background-color: #bbf3ff; */
+    background-color: var(--color);
+    color: #696969;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+`;
+
 type bottomSheetProps = {
     isShow: boolean;
     setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
     children: ReactNode;
     actionTitle: string;
     onClickEvent?: () => void;
+};
+
+export const useBottomSheet = (initialIsOpen = false, initialIsShow = false) => {
+    const [isOpen, setIsOpen] = useState(initialIsOpen);
+    const [isShow, setIsShow] = useState(initialIsShow);
+    const onClickShowHandler = () => {
+        setIsOpen(true);
+        setIsShow(!isShow);
+    };
+    return { isOpen, isShow, setIsShow, onClickShowHandler };
 };
 
 const BottomSheet = ({
