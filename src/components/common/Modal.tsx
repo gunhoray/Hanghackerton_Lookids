@@ -17,6 +17,10 @@ const OverlayBG = styled.div`
 `;
 
 const ModalBox = styled.div`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #fff;
     max-width: 330px;
     width: 90%;
@@ -29,7 +33,18 @@ const ModalBox = styled.div`
     align-items: center;
     gap: 16px;
     text-align: center;
-    line-height: 1.6;
+    line-height: 1.2;
+    z-index: 1000;
+
+    .explanation {
+        font-size: 12px;
+        color: #777;
+        line-height: 1.6;
+    }
+    .time {
+        font-size: 10px;
+        color: #777;
+    }
 `;
 const ModalHeader = styled.div`
     width: 100%;
@@ -81,7 +96,8 @@ const Modal = ({ isOpen, setIsOpen, actionTitle, children, onClickEvent }: modal
         <>
             {isOpen &&
                 ReactDOM.createPortal(
-                    <OverlayBG>
+                    <>
+                        <OverlayBG onClick={onClickCloseHandler}></OverlayBG>
                         <ModalBox>
                             <ModalHeader>
                                 <ModalTitle>{actionTitle}</ModalTitle>
@@ -91,7 +107,7 @@ const Modal = ({ isOpen, setIsOpen, actionTitle, children, onClickEvent }: modal
                             </ModalHeader>
                             {children}
                         </ModalBox>
-                    </OverlayBG>,
+                    </>,
                     document.getElementById('modal-root') as HTMLDivElement
                 )}
         </>
