@@ -11,8 +11,9 @@ const AccessThreeReward = () => {
     };
     return (
         <>
-            <GameActionButton onClick={onClickCreateHandler}>
+            <GameActionButton onClick={onClickCreateHandler} $color="#FF9548">
                 <MagicPowder />
+                마법가루
             </GameActionButton>
             <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'마법가루 보너스'}>
                 <p className="explanation">

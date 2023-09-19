@@ -24,8 +24,9 @@ const LevelUp = () => {
     };
     return (
         <>
-            <GameActionButton onClick={onClickCreateHandler}>
+            <GameActionButton onClick={onClickCreateHandler} $color="#FF9548">
                 <MagicPowder />
+                레벨업 test
             </GameActionButton>
             <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'Level up!'}>
                 <p className="explanation">축하합니다~ 추카합니다~~~</p>

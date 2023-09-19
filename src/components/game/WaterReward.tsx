@@ -15,8 +15,9 @@ const WaterReward = () => {
     const { isOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(false, false);
     return (
         <>
-            <GameActionButton onClick={onClickShowHandler}>
+            <GameActionButton onClick={onClickShowHandler} $color="#48B2FF">
                 <Water />
+                이슬
             </GameActionButton>
             {isOpen && (
                 <BottomSheet isShow={isShow} setIsShow={setIsShow} actionTitle={'이슬받기'}>

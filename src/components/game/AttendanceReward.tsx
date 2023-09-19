@@ -16,8 +16,9 @@ const AttendanceReward = () => {
     };
     return (
         <>
-            <GameActionButton onClick={onClickCreateHandler}>
+            <GameActionButton onClick={onClickCreateHandler} $color="#46B91E">
                 <Calender />
+                출석부
             </GameActionButton>
             <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'출석체크'}>
                 <p className="explanation">

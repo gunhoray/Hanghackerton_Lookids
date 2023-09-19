@@ -1,10 +1,22 @@
 import styled from 'styled-components';
-export const GameActionButton = styled.button`
+
+type styleColor = {
+    $color: string;
+};
+
+export const GameActionButton = styled.button<styleColor>`
     width: 60px;
     height: 60px;
-    background-color: #efefef;
+    background-color: #f0f0f0;
     border-radius: 20px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 12px;
+    color: ${(props) => props.$color || '#000'};
 `;
 export const RewardList = styled.ul`
     width: 100%;

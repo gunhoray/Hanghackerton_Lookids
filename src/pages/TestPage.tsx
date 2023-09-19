@@ -7,13 +7,17 @@ import Menu from '../components/layout/Menu';
 import LevelUp from '../components/game/LevelUp';
 const TestPage = () => {
     return (
-        <div>
+        <div
+            style={{
+                display: 'flex',
+                gap: '16px',
+            }}
+        >
             <AttendanceReward />
             <AccessThreeReward />
             <WaterReward />
-            <Menu />
-            <Heart />
             <LevelUp />
+            <Menu />
         </div>
     );
 };
