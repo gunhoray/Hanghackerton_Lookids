@@ -3,6 +3,9 @@ import { GameHeader } from '../layout/Header';
 import styled from 'styled-components';
 import Button from '../common/Button';
 import Modal from '../common/Modal';
+import { ReactComponent as Character1 } from '../../assets/elemental.pink.1.svg';
+import { ReactComponent as Character2 } from '../../assets/elemental.green.1.svg';
+import useInput from '../../hooks/useInput';
 const CharacterList = styled.ul`
     padding: 1.2rem 0.8rem;
     display: flex;
@@ -33,7 +36,7 @@ const CharacterBox = styled.figure<characterProps>`
 `;
 
 const InputStyle = styled.input`
-    width: 90%;
+    width: 100%;
     padding: 1rem;
     border: none;
     border-radius: 16px;
@@ -55,17 +58,14 @@ const Form = styled.form`
 
 const GameCreate = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [characterName, setCharacterName] = useState<string>('');
-    const onClickHandler = () => {
-        console.log('click');
+    const [characterIndex, setCharacterIndex] = useState<number>(1);
+    const [characterName, CharacterHandler, setCharacterName] = useInput('');
+
+    const onClickCreateHandler = (index: number) => {
         setIsOpen(!isOpen);
+        setCharacterIndex(index);
     };
-    const onClickCreateHandler = () => {
-        alert('click');
-    };
-    const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setCharacterName(event.target.value);
-    };
+
     const onSubmitHandler = () => {
         alert('submit');
     };
@@ -73,17 +73,17 @@ const GameCreate = () => {
         <>
             <GameHeader />
             <CharacterList>
-                <CharacterItem>
+                <CharacterItem onClick={() => onClickCreateHandler(1)}>
                     <CharacterBox>
-                        <img src="" alt="" />
+                        <Character1 />
                     </CharacterBox>
                     <p className="center">요정요정1</p>
                 </CharacterItem>
-                <CharacterItem>
+                <CharacterItem onClick={() => onClickCreateHandler(2)}>
                     <CharacterBox>
-                        <img src="" alt="" />
+                        <Character2 />
                     </CharacterBox>
-                    <p className="center">요정요정1</p>
+                    <p className="center">요정요정2</p>
                 </CharacterItem>
                 <CharacterItem>
                     <CharacterBox>
@@ -91,13 +91,16 @@ const GameCreate = () => {
                     </CharacterBox>
                 </CharacterItem>
             </CharacterList>
-            <Button onClick={onClickHandler}>캐릭터 생성</Button>
-            <Modal isOpen={isOpen} setIsOpen={setIsOpen} onClickEvent={onClickCreateHandler}>
+            {/* <Button onClick={onClickHandler}>캐릭터 생성</Button> */}
+            <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
                 <Form action="" onSubmit={onSubmitHandler}>
-                    <CharacterBox $width={'160px'}>
-                        <img src="" alt="" />
-                    </CharacterBox>
-                    <InputStyle type="text" value={'test'} onChange={onChangeHandler} />
+                    {characterIndex === 1 ? <Character1 /> : <Character2 />}
+                    <InputStyle
+                        type="text"
+                        value={characterName}
+                        onChange={CharacterHandler}
+                        placeholder="요정의 이름을 지어주세요"
+                    />
                     <Button type="submit">캐릭터 생성</Button>
                 </Form>
             </Modal>

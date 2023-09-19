@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import Button from './Button';
 const OverlayBG = styled.div`
     position: fixed;
     top: 0;
@@ -21,7 +20,7 @@ const ModalBox = styled.div`
     max-width: 330px;
     width: 90%;
     min-height: 30vh;
-    padding: 30px 16px;
+    padding: 30px 24px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -32,9 +31,16 @@ const ModalBox = styled.div`
     line-height: 1.6;
 `;
 const ModalHeader = styled.div`
+    width: 100%;
+    height: 40px;
     display: flex;
+    justify-content: space-between;
+    position: relative;
 `;
 const ModalTitle = styled.p`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 20px;
 `;
 
@@ -42,29 +48,33 @@ const ModalCloseButton = styled.button`
     width: 36px;
     height: 36px;
     border-radius: 12px;
+    position: absolute;
+    right: 0;
     background-color: #90ee90;
+    cursor: pointer;
 `;
 
 type modalProps = {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     children: ReactNode;
-    onClickEvent: () => void;
+    onClickEvent?: () => void;
 };
 
 const Modal = ({ isOpen, setIsOpen, children, onClickEvent }: modalProps) => {
-    const onClickCloseHandler = () => {
+    const onClickCloseHandler = (event: React.MouseEvent) => {
+        event.stopPropagation();
         setIsOpen(!isOpen);
     };
     return (
         <>
             {isOpen &&
                 ReactDOM.createPortal(
-                    <OverlayBG onClick={onClickCloseHandler}>
+                    <OverlayBG>
                         <ModalBox>
                             <ModalHeader>
-                                <ModalTitle></ModalTitle>
-                                <ModalCloseButton></ModalCloseButton>
+                                <ModalTitle>캐릭터 생성</ModalTitle>
+                                <ModalCloseButton onClick={onClickCloseHandler}></ModalCloseButton>
                             </ModalHeader>
                             {children}
                         </ModalBox>
