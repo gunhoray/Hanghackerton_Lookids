@@ -10,7 +10,10 @@ import BottomSheet, {
 import { KebabMenuUI } from '../../assets/icons/SVG';
 
 const Menu = () => {
-    const { isOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(false, false);
+    const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(
+        false,
+        false
+    );
     return (
         <>
             <button
@@ -23,7 +26,13 @@ const Menu = () => {
                 <KebabMenuUI />
             </button>
             {isOpen && (
-                <BottomSheet isShow={isShow} setIsShow={setIsShow} actionTitle={'메뉴'}>
+                <BottomSheet
+                    isOpen={isOpen}
+                    setIsOpen={setIsShow}
+                    isShow={isShow}
+                    setIsShow={setIsShow}
+                    actionTitle={'메뉴'}
+                >
                     <MissionList $color={'#D6FFBB'}>
                         <MissionItem>
                             <div className="mission-item-inner">

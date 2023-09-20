@@ -53,7 +53,7 @@ const InputStyle = styled.input`
     }
 `;
 
-const Form = styled.form`
+export const Form = styled.form`
     width: 100%;
     height: 100%;
     display: flex;

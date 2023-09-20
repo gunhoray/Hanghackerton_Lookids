@@ -18,12 +18,7 @@ type LayoutProps = {
     children: ReactNode;
 };
 const Layout = ({ children }: LayoutProps) => {
-    return (
-        <LayoutStyle>
-            {children}
-            <div id="modal-root"></div>
-        </LayoutStyle>
-    );
+    return <LayoutStyle>{children}</LayoutStyle>;
 };
 
 export default Layout;
