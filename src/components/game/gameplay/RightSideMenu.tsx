@@ -8,7 +8,7 @@ const RightsideMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 80%;
+  margin-left: 75%;
   margin-top: 5%;
   gap: 10px;
 `;
