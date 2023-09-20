@@ -7,6 +7,7 @@ import { ReactComponent as Character1 } from '../../assets/elemental.pink.1.svg'
 import { ReactComponent as Character2 } from '../../assets/elemental.green.1.svg';
 import useInput from '../../hooks/useInput';
 import MySVGComponent from '../gamecharcter/Pink1';
+import Green1 from '../gamecharcter/Green1';
 const CharacterList = styled.ul`
     padding: 1.2rem 0.8rem;
     display: flex;
@@ -90,7 +91,7 @@ const GameCreate = () => {
                 </CharacterItem>
                 <CharacterItem onClick={() => onClickCreateHandler(2)}>
                     <CharacterBox>
-                        <Character2 />
+                        <Green1 />
                     </CharacterBox>
                     <p className="center">요정요정2</p>
                 </CharacterItem>
