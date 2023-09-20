@@ -6,6 +6,8 @@ import { XmarkIcon } from '../../assets/icons/SVG';
 const OverlayBG = styled.div`
     position: fixed;
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     max-width: 360px;
     width: 100%;
     height: 100vh;
@@ -48,6 +50,8 @@ const OverlayBG = styled.div`
 const BottomSheetBox = styled.div`
     position: fixed;
     bottom: 0;
+    left: 50%;
+    /* transform: translateX(-50%); */
     background-color: #fff;
     max-width: 360px;
     width: 100%;
@@ -71,18 +75,18 @@ const BottomSheetBox = styled.div`
     }
     @keyframes up {
         0% {
-            transform: translateY(100%);
+            transform: translateY(100%) translateX(-50%);
         }
         100% {
-            transform: translateY(0);
+            transform: translateY(0) translateX(-50%);
         }
     }
     @keyframes down {
         0% {
-            transform: translateY(0);
+            transform: translateY(0) translateX(-50%);
         }
         100% {
-            transform: translateY(100%);
+            transform: translateY(100%) translateX(-50%);
         }
     }
 `;

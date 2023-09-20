@@ -6,6 +6,9 @@ import { Heart } from '../assets/icons/GameIcon';
 import Menu from '../components/layout/Menu';
 import LevelUp from '../components/game/LevelUp';
 import MySVGComponent from '../components/gamecharcter/Pink1';
+import Green1 from '../components/gamecharcter/Green1';
+import FloweryGrow from '../components/gamecharcter/FloweryGrow';
+import MagicpowderReward from '../components/game/MagicpowderReward';
 const TestPage = () => {
     return (
         <>
@@ -16,12 +19,15 @@ const TestPage = () => {
                 }}
             >
                 <AttendanceReward />
-                <AccessThreeReward />
+                {/* <AccessThreeReward /> */}
                 <WaterReward />
+                <MagicpowderReward />
                 <LevelUp />
                 <Menu />
             </div>
             <MySVGComponent />
+            <Green1 />
+            <FloweryGrow />
         </>
     );
 };
