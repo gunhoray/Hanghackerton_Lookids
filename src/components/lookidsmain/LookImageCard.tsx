@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Bookmark } from '../../assets/icons/SVG';
+import { Link } from 'react-router-dom';
 
 type styleProps = {
     $width?: string;
@@ -67,14 +68,16 @@ type LookCardProps = {
 const LookImageCard = ({ image, tags, userName, $width }: LookCardProps) => {
     return (
         <LookCard $width={$width}>
-            <IconButton>
-                <Bookmark />
-            </IconButton>
-            <ImageWapper $width={$width}>
-                <img src={image} alt="look kids item" />
-                <OverlayBG></OverlayBG>
-            </ImageWapper>
-            <p className="tag-style">{tags}</p>
+            <Link to="/purchase">
+                <IconButton>
+                    <Bookmark />
+                </IconButton>
+                <ImageWapper $width={$width}>
+                    <img src={image} alt="look kids item" />
+                    <OverlayBG></OverlayBG>
+                </ImageWapper>
+                <p className="tag-style">{tags}</p>
+            </Link>
         </LookCard>
     );
 };

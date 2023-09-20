@@ -13,8 +13,6 @@ const Ani = styled.div`
     }
     .stpg1 {
         fill: #ffcc66;
-        animation: FG-head-ani-1 3s infinite ease-in;
-        transform-origin: 50% 0%;
     }
     .stpg2 {
         opacity: 0.3;
@@ -100,6 +98,18 @@ const Ani = styled.div`
             /* transform: scale(1.4); */
         }
     }
+    .hair-left {
+        animation: FG-head-ani-1 3s infinite ease-in;
+        transform-origin: 50% 0%;
+    }
+    .hair-right {
+        animation: FG-head-ani-2 3s infinite ease-in;
+        transform-origin: 50% 0%;
+    }
+    .hair-center {
+        animation: FG-head-ani-3 3s infinite ease-in;
+        transform-origin: 50% 100%;
+    }
     @keyframes FG-head-ani-1 {
         0% {
             transform: rotate(0deg);
@@ -111,23 +121,38 @@ const Ani = styled.div`
             transform: rotate(0deg);
         }
     }
-    @keyframes head-ani-2 {
+    @keyframes FG-head-ani-2 {
         0% {
             transform: rotate(0deg);
         }
         40% {
-            transform: translateX(0px) rotate(-2deg);
+            transform: translateX(0px) rotate(-3deg);
         }
         100% {
             transform: rotate(0deg);
         }
     }
-    @keyframes head-ani-3 {
+    @keyframes FG-head-ani-3 {
+        0% {
+            transform: rotate(1deg);
+        }
+        40% {
+            transform: translateY(5px) rotate(-1deg);
+        }
+        100% {
+            transform: rotate(1deg);
+        }
+    }
+    .arm {
+        animation: FG-arm 3s infinite ease-in;
+        transform-origin: 50% 0%;
+    }
+    @keyframes FG-arm {
         0% {
             transform: rotate(0deg);
         }
         60% {
-            transform: translateX(0px) rotate(1deg);
+            transform: translateY(5px) rotate(-1deg);
         }
         100% {
             transform: rotate(0deg);
@@ -166,7 +191,7 @@ const FloweryGrow = () => {
 		s-64.8,137-209.3,190.8S333,904.2,333,904.2s-92.2-56.5,82.6-217.6s244-418,221-424.7l-117-56.2L442.6,230.2z"
                     />
                     <path
-                        className="stpg1 "
+                        className="stpg1 hair-left"
                         d="M442.6,230.2c0,0,254.5-150-33.3-87.8c-211.1,45.6-73.1,231.3-9.8,360.8c33.3,68.1,4.1,167.6,70,205.1
 		c32,18.2,101.3,52.8,133.6,52c0,0-160.4-162.3-91.3-339.7S442.6,230.2,442.6,230.2z"
                     />
@@ -190,7 +215,7 @@ const FloweryGrow = () => {
                         <stop offset="1" style={{ stopColor: '#FF00CC' }} />
                     </radialGradient>
                     <path
-                        className="stpg2"
+                        className="stpg2 hair-right"
                         d="M670.5,117.2c0,0-69.8-33.4-147.8-1c-8.1,3.4-15.3,7.2-21.8,11.5c-21.2,1.4-50.9,5.9-91.2,14.6
 		c-211.1,45.6-73.1,231.3-9.8,360.8c24.7,50.5,15.1,118.2,35.2,165.1c-6.2,6.3-12.6,12.4-19.1,18.4
 		c-174.8,161.1-82.6,217.6-82.6,217.6s-34.9-63.1,109.6-117c33.6-12.5,62.9-29.5,88.1-48.3c27.2,12,55.2,21.7,72.5,21.3
@@ -397,7 +422,7 @@ const FloweryGrow = () => {
                         d="M442.6,230.2c0,0-36.1-23.5-72.1,18.5c0,0,51.4-79.3,1.1-71.8C371.6,176.8,691.7,71,442.6,230.2z"
                     />
                     <path
-                        className="stpg3"
+                        className="stpg3 arm"
                         d="M425.4,517.1c-2.8,1.3-5.5,2.8-8,4.3l-59.8-22.6c-8.6-5-19.6-23.8-27.6-6.4l0,0c-5.3,9.1,8,19.2,22.2,19.4
 		l45.9,42.4c7.2,8.8,29,9.5,52.1,1.1c8.7-3.2,16.4-7.2,22.7-11.6c0.1-0.4,0.1-0.9,0.2-1.3C455.9,536.3,439.9,527.7,425.4,517.1z"
                     />
@@ -411,7 +436,7 @@ const FloweryGrow = () => {
                         d="M473.2,542.3c-0.1,0.4-0.1,0.9-0.2,1.3c0.4-0.3,0.8-0.6,1.3-0.9C473.9,542.6,473.5,542.4,473.2,542.3z"
                     />
                     <path
-                        className="stpg14"
+                        className="stpg14 hair-center"
                         d="M541.3,152.9c18.1-25.8,4.8-45.5-99.2-33.9c-238.4,26.6-128.6-23.3-128.6-23.3s-177.7,52,57.6,80.8
 		c50.3-7.5-1.1,71.8-1.1,71.8c36.1-42,72.2-18.5,72.2-18.5s102.6-25.9,194.4,31.8c0,0,9.8-55.3,74.1-48.6
 		C757.5,218,643.3,131.8,541.3,152.9z"

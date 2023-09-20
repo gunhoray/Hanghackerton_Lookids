@@ -10,14 +10,27 @@ import BottomSheet, {
     useBottomSheet,
 } from '../common/BottomSheet';
 import { useNavigate } from 'react-router-dom';
-// import { styled } from 'styled-components';
-
+import { styled } from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../redux/config/configStore';
+import { ADD_PAGE, TIME_INTERVAL } from '../../redux/modules/toastSlice';
 const WaterReward = () => {
     const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(
         false,
         false
     );
+
+    const { page } = useSelector((state: RootState) => {
+        return state.toast;
+    });
+
     const nav = useNavigate();
+    const dispatch = useDispatch();
+    const onClickHandler = () => {
+        nav('/');
+        dispatch(ADD_PAGE('main'));
+    };
+
     return (
         <>
             <GameActionButton onClick={onClickShowHandler} $color="#48B2FF">
@@ -37,7 +50,7 @@ const WaterReward = () => {
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>인기 급상승템 구경하기</MissionText>
-                                <MissionButton onClick={() => nav('/')}>바로 가기</MissionButton>
+                                <MissionButton onClick={onClickHandler}>바로 가기</MissionButton>
                             </div>
                         </MissionItem>
                         <MissionItem>
