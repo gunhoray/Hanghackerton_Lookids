@@ -12,9 +12,16 @@ interface CustomAxiosResponse extends AxiosResponse {
   headers: AxiosCustomHeaders;
 }
 
+// accessToken
+// : 
+// isSignUp
+// : 
+// refreshToken
+// :
+
 const Oauth: React.FC = () => {
   const code = new URL(window.location.href).searchParams.get("code");
-  console.log(code);
+  // console.log(code);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,14 +37,14 @@ const Oauth: React.FC = () => {
             withCredentials: true,
           }
         );
-        const access = res.headers.access;
-        const refresh = res.headers.refresh;
+        const access = res.data.accessToken;
+        const refresh = res.data.refreshToken;
         localStorage.setItem("Access", access);
         localStorage.setItem("Refresh", refresh);
-        console.log(res);
+        // console.log(res);
         navigate("/");
       } catch (e) {
-        console.error(e);
+        // console.error(e);
         navigate("/");
       }
     })();
