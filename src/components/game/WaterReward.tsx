@@ -12,7 +12,10 @@ import BottomSheet, {
 // import { styled } from 'styled-components';
 
 const WaterReward = () => {
-    const { isOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(false, false);
+    const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(
+        false,
+        false
+    );
     return (
         <>
             <GameActionButton onClick={onClickShowHandler} $color="#48B2FF">
@@ -20,7 +23,13 @@ const WaterReward = () => {
                 이슬
             </GameActionButton>
             {isOpen && (
-                <BottomSheet isShow={isShow} setIsShow={setIsShow} actionTitle={'이슬받기'}>
+                <BottomSheet
+                    isOpen={isOpen}
+                    isShow={isShow}
+                    setIsShow={setIsShow}
+                    setIsOpen={setIsOpen}
+                    actionTitle={'이슬받기'}
+                >
                     <MissionList $color={'#bbf3ff'}>
                         <MissionItem>
                             <div className="mission-item-inner">

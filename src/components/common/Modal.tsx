@@ -5,7 +5,8 @@ import { XmarkIcon } from '../../assets/icons/SVG';
 const OverlayBG = styled.div`
     position: fixed;
     top: 0;
-    /* left: 0; */
+    left: 50%;
+    transform: translateX(-50%);
     max-width: 360px;
     width: 100%;
     height: 100vh;
@@ -51,13 +52,15 @@ const ModalHeader = styled.div`
     height: 40px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: relative;
 `;
 const ModalTitle = styled.p`
+    width: 100%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 20px;
+    font-size: 24px;
 `;
 
 const ModalCloseButton = styled.button`
