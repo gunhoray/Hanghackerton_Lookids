@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AngleLaft, Bell, Bookmark, SearchIcon } from '../../assets/icons/SVG';
 import { useNavigate } from 'react-router-dom';
+import Menu from "./Menu";
 const HeaderStyle = styled.header`
     width: 100%;
     /* height: 3rem; */
@@ -64,12 +65,13 @@ export const MainHeader = () => {
 export const GameHeader = () => {
     const router = useNavigate();
     return (
-        <GameHeaderStyle>
-            <IconBox onClick={() => router(-1)}>
-                <AngleLaft />
-            </IconBox>
-            <h1 className="center">캐릭터 생성</h1>
-        </GameHeaderStyle>
+      <GameHeaderStyle>
+        <IconBox onClick={() => router(-1)}>
+          <AngleLaft />
+        </IconBox>
+        <h1 className="center">캐릭터 생성</h1>
+        <Menu />
+      </GameHeaderStyle>
     );
 };
 
