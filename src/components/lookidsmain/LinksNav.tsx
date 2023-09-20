@@ -44,9 +44,9 @@ const linkList = [
 const LinksNav = () => {
     return (
         <LinksNavStyle>
-            {linkList.map((link) => {
+            {linkList.map((link, index) => {
                 return (
-                    <LinkStyle to={link.route}>
+                    <LinkStyle to={link.route} key={`link-${index}`}>
                         <ShoppingIcon />
                         {link.name}
                     </LinkStyle>

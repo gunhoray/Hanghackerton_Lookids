@@ -60,6 +60,7 @@ const BottomSheetBox = styled.div`
     align-items: center;
     gap: 16px;
     text-align: center;
+    font-size: 1.1rem;
     line-height: 1.2;
     z-index: 1000;
     &.up {
@@ -143,6 +144,10 @@ export const MissionIcon = styled.span`
     display: flex;
     justify-content: center;
     align-items: center;
+    path {
+        fill: var(--color);
+        filter: brightness(0.7);
+    }
 `;
 
 type styleProps = {

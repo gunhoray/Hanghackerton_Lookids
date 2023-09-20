@@ -44,9 +44,14 @@ const LookList = () => {
         <>
             <SectionTitle>인기 급상승템</SectionTitle>
             <PopularLookList>
-                {mockData.map((item) => {
+                {mockData.map((item, index) => {
                     return (
-                        <LookImageCard image={item.image} tags={item.tags} userName={item.tags} />
+                        <LookImageCard
+                            image={item.image}
+                            tags={item.tags}
+                            userName={item.tags}
+                            key={`lookimg-${index}`}
+                        />
                     );
                 })}
             </PopularLookList>

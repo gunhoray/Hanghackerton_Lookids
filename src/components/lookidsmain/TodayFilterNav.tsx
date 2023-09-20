@@ -31,9 +31,9 @@ const filter = ['성별', '연령대', '키/몸무게', '카테고리'];
 const TodayFilterNav = () => {
     return (
         <FilterNavStyle>
-            {filter.map((item) => {
+            {filter.map((item, index) => {
                 return (
-                    <FilterItem>
+                    <FilterItem key={`filter-${index}`}>
                         {item} <AngleDown />
                     </FilterItem>
                 );

@@ -55,7 +55,7 @@ const AccessThreeReward = () => {
                     <RewardList>
                         {rewardData.map((day, index) => (
                             <RewardItem
-                                key={index}
+                                key={`three-reward-${index}`}
                                 className={`three ${day.past ? 'past' : ''} ${
                                     day.now ? 'active-now' : ''
                                 }`}

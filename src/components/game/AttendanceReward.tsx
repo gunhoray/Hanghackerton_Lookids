@@ -100,7 +100,10 @@ const AttendanceReward = () => {
                     </p>
                     <RewardList>
                         {rewardData.map((day, index) => (
-                            <RewardItem key={index} className={day.past ? 'past' : ''}>
+                            <RewardItem
+                                key={`attendance-reward-${index}`}
+                                className={day.past ? 'past' : ''}
+                            >
                                 {day.day}
                                 <RewordBox>
                                     {!day.past ? (

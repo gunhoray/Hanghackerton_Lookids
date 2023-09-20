@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AngleLaft, Bell, Bookmark, SearchIcon } from '../../assets/icons/SVG';
 import { useNavigate } from 'react-router-dom';
+import Menu from '../layout/Menu';
 const HeaderStyle = styled.header`
     width: 100%;
     /* height: 3rem; */
@@ -33,7 +34,7 @@ const HeaderIconBox = styled.nav`
     gap: 0.5rem;
 `;
 
-const IconBox = styled.button`
+export const IconBox = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,6 +70,7 @@ export const GameHeader = () => {
                 <AngleLaft />
             </IconBox>
             <h1 className="center">캐릭터 생성</h1>
+            <Menu />
         </GameHeaderStyle>
     );
 };
