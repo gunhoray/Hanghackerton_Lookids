@@ -23,6 +23,10 @@ export const RewardList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    & > :nth-child(1),
+    & > :nth-child(2) {
+        width: calc(25% - 6px);
+    }
 `;
 
 export const RewardItem = styled.li`
@@ -35,8 +39,8 @@ export const RewardItem = styled.li`
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    &.half {
-        width: calc(25% - 6px);
+    svg {
+        height: 30px;
     }
     &.three {
         width: calc(33.33% - 6px);
@@ -45,6 +49,12 @@ export const RewardItem = styled.li`
             padding: 10px 0;
             box-sizing: content-box;
         }
+    }
+    &.past {
+        background-color: #b5b5b5;
+    }
+    &.active-now {
+        background-color: #ffe8c7;
     }
 `;
 

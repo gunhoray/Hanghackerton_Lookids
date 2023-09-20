@@ -60,6 +60,7 @@ const BottomSheetBox = styled.div`
     align-items: center;
     gap: 16px;
     text-align: center;
+    font-size: 1.1rem;
     line-height: 1.2;
     z-index: 1000;
     &.up {
@@ -143,6 +144,10 @@ export const MissionIcon = styled.span`
     display: flex;
     justify-content: center;
     align-items: center;
+    path {
+        fill: var(--color);
+        filter: brightness(0.7);
+    }
 `;
 
 type styleProps = {
@@ -165,7 +170,9 @@ export const MissionButton = styled.button`
 
 type bottomSheetProps = {
     isShow: boolean;
+    isOpen: boolean;
     setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     children: ReactNode;
     actionTitle: string;
     onClickEvent?: () => void;
@@ -176,12 +183,14 @@ export const useBottomSheet = (initialIsOpen = false, initialIsShow = false) => 
     const [isShow, setIsShow] = useState(initialIsShow);
     const onClickShowHandler = () => {
         setIsOpen(true);
-        setIsShow(!isShow);
+        setIsShow(true);
     };
-    return { isOpen, isShow, setIsShow, onClickShowHandler };
+    return { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler };
 };
 
 const BottomSheet = ({
+    isOpen,
+    setIsOpen,
     isShow,
     setIsShow,
     actionTitle,
@@ -189,7 +198,10 @@ const BottomSheet = ({
     onClickEvent,
 }: bottomSheetProps) => {
     const onClickCloseHandler = () => {
-        setIsShow(!isShow);
+        setIsShow(false);
+        setTimeout(() => {
+            setIsOpen(false); // 0.8초 후에 모달 열기/닫기 상태를 토글합니다.
+        }, 800); // 0.8초 (800 밀리초) 지연
     };
 
     return (
