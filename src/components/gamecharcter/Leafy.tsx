@@ -111,7 +111,7 @@ const Ani = styled.div`
         }
     }
 `;
-const Green1 = () => {
+const Leafy = () => {
     return (
         <Ani>
             <svg
@@ -264,4 +264,4 @@ const Green1 = () => {
     );
 };
 
-export default Green1;
+export default Leafy;
