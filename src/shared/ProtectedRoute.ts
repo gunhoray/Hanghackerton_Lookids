@@ -1,31 +1,38 @@
-// import { useNavigate } from "react-router-dom";
-// import { useState, useEffect } from "react";
-// import { LoginStatus } from "../api/AuthApi";
-// import { useDispatch } from "react-redux";
-// import { setRedirectUrl } from "../redux/modules/Modules";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-// interface UserRouteProps {
-//   element: React.ReactNode;
-//   path: string;
-// }
+import { useDispatch } from "react-redux";
+import { fetchUser } from "../apis/\bAuthApi";
 
-// const UserRoute: React.FC<UserRouteProps> = ({ element, path }) => {
-//   const navigate = useNavigate();
-//   const [authentication, setAuthentication] = useState(false);
-//   const dispatch = useDispatch();
-//   useEffect(() => {
-//     const LoginStatusCheck = async () => {
-//       const loginStatus = await LoginStatus();
-//       setAuthentication(loginStatus);
-//       if (!loginStatus) {
-//         dispatch(setRedirectUrl(path));
-//         navigate("/login");
-//       }
-//     };
-//     LoginStatusCheck();
-//   }, [navigate]);
+interface UserRouteProps {
+  element: React.ReactNode;
+  path: string;
+}
 
-//   return authentication ? element : null;
-// };
+const UserRoute: React.FC<UserRouteProps> = ({ element, path }) => {
+  const navigate = useNavigate();
+  const [authentication, setAuthentication] = useState(false);
+  const dispatch = useDispatch();
 
-// export default UserRoute;
+  useEffect(() => {
+    const LoginStatusCheck = async () => {
+      try {
+        const loginStatus = await fetchUser();
+        setAuthentication(loginStatus);
+        if (!loginStatus) {
+          // dispatch(setRedirectUrl(path));
+          navigate("/login");
+        }
+      } catch (error) {
+        console.error("Error occurred while fetching user:", error);
+        navigate("/login");
+      }
+    };
+
+    LoginStatusCheck();
+  }, [navigate]);
+
+  return authentication ? element : null;
+};
+
+export default UserRoute;
