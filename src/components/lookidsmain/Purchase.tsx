@@ -66,7 +66,7 @@ const Purchase = () => {
     return (
         <>
             <Imagebox>
-                <img src={baby01} alt="" />
+                <img src={baby01} alt="purchase" />
             </Imagebox>
             <InfoBox>
                 <PurchaseTitle>Purchase</PurchaseTitle>

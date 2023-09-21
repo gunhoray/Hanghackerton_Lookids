@@ -162,10 +162,16 @@ export const MissionText = styled.p<styleProps>`
     width: ${(props) => (props.$width ? props.$width : 'calc(100% - 140px)')};
     text-align: start;
 `;
-export const MissionButton = styled.button`
+
+type missionProps = {
+    $color?: string;
+};
+
+export const MissionButton = styled.button<missionProps>`
+    min-width: 70px;
     font-size: 0.9rem;
     /* background-color: #bbf3ff; */
-    background-color: var(--color);
+    background-color: ${(props) => (props.$color ? props.$color : `var(--color)`)};
     color: #696969;
     padding: 0.4rem 0.6rem;
     border-radius: 6px;

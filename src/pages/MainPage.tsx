@@ -9,25 +9,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TIME_INTERVAL } from '../redux/modules/toastSlice';
 import { RootState } from '../redux/config/configStore';
 import { LookidsGlobalStyle } from '../components/lookidsmain/LookkidsGlobalStyle';
+import ToastUIContainer from '../components/common/ToastUI';
 const MainPage = () => {
     const dispatch = useDispatch();
-    const { time } = useSelector((state: RootState) => {
+    const { page } = useSelector((state: RootState) => {
         return state.toast;
     });
     useEffect(() => {
-        const timer = setInterval(() => {
-            dispatch(TIME_INTERVAL());
-        }, 1000);
-        console.log(time);
-        return () => {
-            clearInterval(timer);
-        };
-    }, [time]);
+        if (page === 'main') {
+            const timer = setInterval(() => {
+                dispatch(TIME_INTERVAL());
+            }, 300);
+            return () => {
+                clearInterval(timer);
+            };
+        }
+        // console.log(time);
+    }, []);
 
     return (
         <>
             <LookidsGlobalStyle />
             <MainHeader />
+            <ToastUIContainer />
             <TabBar />
             <LookList />
             <LinksNav />

@@ -13,14 +13,13 @@ import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/config/configStore';
-import { ADD_PAGE, TIME_INTERVAL } from '../../redux/modules/toastSlice';
+import { ADD_PAGE, CLEAR_TIME, TIME_INTERVAL } from '../../redux/modules/toastSlice';
 const WaterReward = () => {
     const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(
         false,
         false
     );
-
-    const { page } = useSelector((state: RootState) => {
+    const { page, time, getReward } = useSelector((state: RootState) => {
         return state.toast;
     });
 
@@ -31,9 +30,15 @@ const WaterReward = () => {
         dispatch(ADD_PAGE('main'));
     };
 
+    const onClickGetRewardHandler = () => {
+        dispatch(CLEAR_TIME());
+        setIsOpen(!isOpen);
+        alert('get reward');
+    };
     return (
         <>
             <GameActionButton onClick={onClickShowHandler} $color="#48B2FF">
+                {getReward && <span className="can-get-reward"></span>}
                 <Water />
                 이슬
             </GameActionButton>
@@ -49,29 +54,44 @@ const WaterReward = () => {
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
-                                <MissionText>인기 급상승템 구경하기</MissionText>
-                                <MissionButton onClick={onClickHandler}>바로 가기</MissionButton>
+                                <MissionText>트렌드 구경하기 (30초)</MissionText>
+                                {page !== 'main' && getReward === false ? (
+                                    <MissionButton onClick={onClickHandler}>
+                                        바로 가기
+                                    </MissionButton>
+                                ) : time === 0 ? (
+                                    <MissionButton
+                                        $color="#7BDFFF"
+                                        onClick={onClickGetRewardHandler}
+                                    >
+                                        보상 받기
+                                    </MissionButton>
+                                ) : (
+                                    <MissionButton $color="#efefef" onClick={() => nav('/')}>
+                                        {time}s
+                                    </MissionButton>
+                                )}
                             </div>
                         </MissionItem>
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
-                                <MissionText>오늘 뭐입지? 구경하기</MissionText>
-                                <MissionButton onClick={() => nav('/')}>바로 가기</MissionButton>
+                                <MissionText>이벤트 구경하기</MissionText>
+                                <MissionButton $color="#efefef">바로 가기</MissionButton>
                             </div>
                         </MissionItem>
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>신상마켓 구경하기</MissionText>
-                                <MissionButton>바로 가기</MissionButton>
+                                <MissionButton $color="#efefef">바로 가기</MissionButton>
                             </div>
                         </MissionItem>
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>리셀마켓 구경하기</MissionText>
-                                <MissionButton>바로 가기</MissionButton>
+                                <MissionButton $color="#efefef">바로 가기</MissionButton>
                             </div>
                         </MissionItem>
                     </MissionList>

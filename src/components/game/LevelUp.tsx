@@ -6,6 +6,7 @@ import Button from '../common/Button';
 import { styled } from 'styled-components';
 import { ReactComponent as Character1 } from '../../assets/elemental.pink.2.svg';
 import { Form } from './GameCreate';
+import FloweryGrow from '../gamecharcter/FloweryGrow';
 
 const RewordPoint = styled.div`
     width: 100%;
@@ -87,7 +88,7 @@ const LevelUp = () => {
                 <Form action="" onSubmit={onSubmitHandler}>
                     <p className="explanation">축하합니다~ 추카합니다~~~</p>
                     <LevelupEffect>
-                        <Character1 height={'200px'} />
+                        <FloweryGrow height={'200px'} />
                         <span className="animation-3"></span>
                         <span className="animation-2"></span>
                         <span className="animation-1"></span>
