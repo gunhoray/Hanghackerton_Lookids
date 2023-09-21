@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import baby01 from '../../assets/images/baby01.jpeg';
+import Modal from '../common/Modal';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { SUCCESS_MISSION } from '../../redux/modules/magicMissionSlice';
 const Imagebox = styled.div`
     width: 100%;
     height: 40vh;
@@ -17,6 +21,7 @@ const PurchaseTitle = styled.h2`
     font-size: 24px;
     margin-bottom: 6px;
     font-weight: 700;
+    line-height: 1.4;
     /* padding: 1.2rem 0.8rem 0.4rem; */
 `;
 
@@ -37,7 +42,15 @@ const StateTag = styled.div`
     color: #000;
     border: 1px solid #000;
     border-radius: 8px;
-    cursor: pointer;
+`;
+
+const ModalButton = styled.button`
+    width: 60%;
+    padding: 0.6rem 0.8rem;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 8px;
 `;
 
 const BuyBar = styled.div`
@@ -63,13 +76,23 @@ const BuyButton = styled.button`
 `;
 
 const Purchase = () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const dispatch = useDispatch();
+
+    const purchaseHandler = () => {
+        setIsOpen(!isOpen);
+        dispatch(SUCCESS_MISSION('purchase'));
+    };
+    const nav = useNavigate();
     return (
         <>
             <Imagebox>
                 <img src={baby01} alt="purchase" />
             </Imagebox>
             <InfoBox>
-                <PurchaseTitle>Purchase</PurchaseTitle>
+                <PurchaseTitle>
+                    베이비갭 <br /> 남아 상의 90-100{' '}
+                </PurchaseTitle>
                 <DateInfo>2023년 9월 1일 올림</DateInfo>
                 <ProductState>
                     <StateTag>판매중</StateTag>
@@ -79,7 +102,11 @@ const Purchase = () => {
             </InfoBox>
             <BuyBar>
                 400,000원
-                <BuyButton>채팅으로 구매하기</BuyButton>
+                <BuyButton onClick={purchaseHandler}>채팅으로 구매하기</BuyButton>
+                <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle="구매 완료">
+                    구매가 완료되었습니다~!
+                    <ModalButton onClick={() => nav('/')}>확인</ModalButton>
+                </Modal>
             </BuyBar>
         </>
     );

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/config/configStore';
-import { GET_REWARD, TIME_INTERVAL } from '../../redux/modules/toastSlice';
+import { TIME_INTERVAL } from '../../redux/modules/toastSlice';
 
 const TimeCheck = () => {
     const dispatch = useDispatch();
