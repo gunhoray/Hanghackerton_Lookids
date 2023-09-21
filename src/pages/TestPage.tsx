@@ -3,12 +3,13 @@ import AttendanceReward from '../components/game/AttendanceReward';
 import WaterReward from '../components/game/WaterReward';
 import Menu from '../components/layout/Menu';
 import LevelUp from '../components/game/LevelUp';
-import MySVGComponent from '../components/gamecharcter/Folwery';
+import Folwery from '../components/gamecharcter/Folwery';
 import Green1 from '../components/gamecharcter/Leafy';
 import FloweryGrow from '../components/gamecharcter/FloweryGrow';
 import MagicpowderReward from '../components/game/MagicpowderReward';
 import LeafyGrow from '../components/gamecharcter/LeafyGrow';
 import ShareLink from '../components/common/ShareLink';
+import SpeechBubble from '../components/game/gameplay/SpeechBubble';
 const TestPage = () => {
     return (
         <>
@@ -27,7 +28,8 @@ const TestPage = () => {
                 <Menu />
                 <ShareLink />
             </div>
-            <MySVGComponent />
+            <SpeechBubble />
+            <Folwery />
             <Green1 />
             <FloweryGrow />
             <LeafyGrow />
