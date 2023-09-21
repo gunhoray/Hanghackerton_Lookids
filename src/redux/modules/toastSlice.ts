@@ -33,7 +33,6 @@ const toastSlice = createSlice({
                 state.message = '미션이 완료되었습니다!';
             }
         },
-        GET_REWARD: (state) => {},
         CLEAR_TOAST: (state) => {
             state.message = null;
             state.page = null;
@@ -46,6 +45,6 @@ const toastSlice = createSlice({
     },
 });
 
-export const { ADD_PAGE, CLEAR_TOAST, TIME_INTERVAL, CLEAR_TIME, GET_REWARD } = toastSlice.actions;
+export const { ADD_PAGE, CLEAR_TOAST, TIME_INTERVAL, CLEAR_TIME } = toastSlice.actions;
 
 export default toastSlice.reducer;
