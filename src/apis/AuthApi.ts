@@ -7,7 +7,8 @@ export const fetchUser = async () => {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-  console.log(accessToken);
-  console.log(response);
+
+  // console.log(accessToken);
+  // console.log(response);
   return response.data;
 };
