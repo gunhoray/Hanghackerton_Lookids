@@ -132,17 +132,18 @@ const ToastUIContainer = () => {
         setToastArr((prevArr) => [...prevArr, newNotification]);
         setTimeout(() => {
             removeNotification(newNotification.id);
-            dispatch(CLEAR_TOAST());
         }, FADE_OUT_INTERVAL + 2000);
     };
 
     const removeNotification = (id: any) => {
         setToastArr((prevArr) => prevArr.filter((notification) => notification.id !== id));
+        dispatch(CLEAR_TOAST());
     };
 
     useEffect(() => {
         if (message) {
             addNotification(message);
+            console.log(message);
         }
     }, [message]);
 
