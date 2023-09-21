@@ -20,19 +20,19 @@ import { Form } from './GameCreate';
 
 const rewardData = [
     {
-        day: '1일차',
+        day: '월요일',
         items: [{ name: 'Water', count: 3 }],
         past: true,
         received: false,
     },
     {
-        day: '2일차',
+        day: '화요일',
         items: [{ name: 'Water', count: 3 }],
         past: true,
         received: true,
     },
     {
-        day: '3일차',
+        day: '수요일',
         items: [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
@@ -41,7 +41,7 @@ const rewardData = [
         received: false,
     },
     {
-        day: '4일차',
+        day: '목요일',
         items: [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
@@ -50,7 +50,7 @@ const rewardData = [
         received: false,
     },
     {
-        day: '5일차',
+        day: '금요일',
         items: [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
@@ -59,7 +59,7 @@ const rewardData = [
         received: false,
     },
     {
-        day: '6일차',
+        day: '토요일',
         items: [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
@@ -68,7 +68,7 @@ const rewardData = [
         received: false,
     },
     {
-        day: '7일차',
+        day: '일요일',
         items: [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
