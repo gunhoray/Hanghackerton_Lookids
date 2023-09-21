@@ -2,114 +2,114 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Ani = styled.div`
-    width: 100%;
-    height: auto;
-    svg {
-        /* animation: body 3s infinite ease-in;
+  width: 60%;
+  height: auto;
+  svg {
+    /* animation: body 3s infinite ease-in;
         transform-origin: 50% 100%; */
+  }
+  .stg0 {
+    fill: url(#SVGID_1_);
+  }
+  .stg1 {
+    opacity: 0.3;
+    fill: #00ff00;
+  }
+  .stg2 {
+    fill: #ffffff;
+  }
+  .stg3 {
+    fill: url(#SVGID_00000126298780453412386840000006527918043964906627_);
+  }
+  .stg4 {
+    opacity: 0.4;
+    fill: #81a37b;
+    &.left {
+      animation: leaves-left-1 3s infinite ease-out;
+      transform-origin: 50% 100%;
     }
-    .stg0 {
-        fill: url(#SVGID_1_);
+  }
+  .stg5 {
+    fill: url(#SVGID_00000022527145978993971850000011615640626812795559_);
+  }
+  .stg6 {
+    opacity: 0.2;
+    fill: #00ff00;
+  }
+  #green1-eyes-left,
+  #green1-eyes-right {
+    animation: eyes-ani 5s infinite ease-in-out;
+  }
+  @keyframes eyes-ani {
+    0% {
+      transform: translate(10px, 0px);
     }
-    .stg1 {
-        opacity: 0.3;
-        fill: #00ff00;
+    30% {
+      transform: translate(10px, 20px);
     }
-    .stg2 {
-        fill: #ffffff;
+    60% {
+      transform: translate(-10px, 10px);
     }
-    .stg3 {
-        fill: url(#SVGID_00000126298780453412386840000006527918043964906627_);
+    90% {
+      transform: translate(-10px, 0px);
     }
-    .stg4 {
-        opacity: 0.4;
-        fill: #81a37b;
-        &.left {
-            animation: leaves-left-1 3s infinite ease-out;
-            transform-origin: 50% 100%;
-        }
+    100% {
+      transform: translate(10px, 0px);
     }
-    .stg5 {
-        fill: url(#SVGID_00000022527145978993971850000011615640626812795559_);
-    }
-    .stg6 {
-        opacity: 0.2;
-        fill: #00ff00;
-    }
-    #green1-eyes-left,
-    #green1-eyes-right {
-        animation: eyes-ani 5s infinite ease-in-out;
-    }
-    @keyframes eyes-ani {
-        0% {
-            transform: translate(10px, 0px);
-        }
-        30% {
-            transform: translate(10px, 20px);
-        }
-        60% {
-            transform: translate(-10px, 10px);
-        }
-        90% {
-            transform: translate(-10px, 0px);
-        }
-        100% {
-            transform: translate(10px, 0px);
-        }
-    }
-    #leaves-left {
-        animation: leaves-left-1 3s infinite ease-out;
-        transform-origin: 50% 100%;
-    }
-    #leaves-right {
-        animation: leaves-right-1 3s infinite ease-out;
-        transform-origin: 50% 100%;
-    }
+  }
+  #leaves-left {
+    animation: leaves-left-1 3s infinite ease-out;
+    transform-origin: 50% 100%;
+  }
+  #leaves-right {
+    animation: leaves-right-1 3s infinite ease-out;
+    transform-origin: 50% 100%;
+  }
 
-    @keyframes leaves-left-1 {
-        0% {
-            transform: rotate(0deg);
-        }
-        60% {
-            transform: translateX(10px) rotate(2deg);
-        }
-        100% {
-            transform: rotate(0deg);
-        }
+  @keyframes leaves-left-1 {
+    0% {
+      transform: rotate(0deg);
     }
-    @keyframes leaves-right-1 {
-        0% {
-            transform: rotate(0deg);
-        }
-        60% {
-            transform: translateX(-10px) rotate(-2deg);
-        }
-        100% {
-            transform: rotate(0deg);
-        }
+    60% {
+      transform: translateX(10px) rotate(2deg);
     }
-    @keyframes head-ani-3 {
-        0% {
-            transform: rotate(0deg);
-        }
-        60% {
-            transform: translateX(0px) rotate(1deg);
-        }
-        100% {
-            transform: rotate(0deg);
-        }
+    100% {
+      transform: rotate(0deg);
     }
-    @keyframes body {
-        0% {
-            transform: rotate(-2deg);
-        }
-        60% {
-            transform: rotate(5deg);
-        }
-        100% {
-            transform: rotate(-2deg);
-        }
+  }
+  @keyframes leaves-right-1 {
+    0% {
+      transform: rotate(0deg);
     }
+    60% {
+      transform: translateX(-10px) rotate(-2deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes head-ani-3 {
+    0% {
+      transform: rotate(0deg);
+    }
+    60% {
+      transform: translateX(0px) rotate(1deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes body {
+    0% {
+      transform: rotate(-2deg);
+    }
+    60% {
+      transform: rotate(5deg);
+    }
+    100% {
+      transform: rotate(-2deg);
+    }
+  }
 `;
 const Leafy = () => {
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { MagicPowder } from "../../../assets/icons/GameIcon";
+import { Heart, MagicPowder } from "../../../assets/icons/GameIcon";
 import Timer from "./Timer";
 
 type style = {
@@ -25,7 +25,7 @@ const RewardTimer = () => {
   return (
     <>
       <TimerActionButton>
-        <MagicPowder />
+        <Heart />
       </TimerActionButton>
       <Timer />
     </>

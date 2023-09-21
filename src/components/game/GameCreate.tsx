@@ -79,42 +79,46 @@ const GameCreate = () => {
         alert('submit');
     };
     return (
-        <>
-            <GameHeader />
-            <CharacterList>
-                <CharacterItem onClick={() => onClickCreateHandler(1)}>
-                    <CharacterBox>
-                        <MySVGComponent />
-                        {/* <Character1 /> */}
-                    </CharacterBox>
-                    <p className="center">요정요정1</p>
-                </CharacterItem>
-                <CharacterItem onClick={() => onClickCreateHandler(2)}>
-                    <CharacterBox>
-                        <Green1 />
-                    </CharacterBox>
-                    <p className="center">요정요정2</p>
-                </CharacterItem>
-                <CharacterItem>
-                    <CharacterBox>
-                        준비중인 요정입니다. <br /> 기대해주세요
-                    </CharacterBox>
-                </CharacterItem>
-            </CharacterList>
-            {/* <Button onClick={onClickHandler}>캐릭터 생성</Button> */}
-            <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'캐릭터 생성'}>
-                <Form action="" onSubmit={onSubmitHandler}>
-                    {characterIndex === 1 ? <Character1 /> : <Character2 />}
-                    <InputStyle
-                        type="text"
-                        value={characterName}
-                        onChange={CharacterHandler}
-                        placeholder="요정의 이름을 지어주세요"
-                    />
-                    <Button type="submit">캐릭터 생성</Button>
-                </Form>
-            </Modal>
-        </>
+      <>
+        <GameHeader headerName="캐릭터 생성" />
+        <CharacterList>
+          <CharacterItem onClick={() => onClickCreateHandler(1)}>
+            <CharacterBox>
+              <MySVGComponent />
+              {/* <Character1 /> */}
+            </CharacterBox>
+            <p className="center">요정요정1</p>
+          </CharacterItem>
+          <CharacterItem onClick={() => onClickCreateHandler(2)}>
+            <CharacterBox>
+              <Green1 />
+            </CharacterBox>
+            <p className="center">요정요정2</p>
+          </CharacterItem>
+          <CharacterItem>
+            <CharacterBox>
+              준비중인 요정입니다. <br /> 기대해주세요
+            </CharacterBox>
+          </CharacterItem>
+        </CharacterList>
+        {/* <Button onClick={onClickHandler}>캐릭터 생성</Button> */}
+        <Modal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          actionTitle={"캐릭터 생성"}
+        >
+          <Form action="" onSubmit={onSubmitHandler}>
+            {characterIndex === 1 ? <Character1 /> : <Character2 />}
+            <InputStyle
+              type="text"
+              value={characterName}
+              onChange={CharacterHandler}
+              placeholder="요정의 이름을 지어주세요"
+            />
+            <Button type="submit">캐릭터 생성</Button>
+          </Form>
+        </Modal>
+      </>
     );
 };
 
