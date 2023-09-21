@@ -2,11 +2,14 @@ import DaytimeGreenBackground from "../../../assets/backgrounds/background.green
 import NighttimeGreenBackground from "../../../assets/backgrounds/background.green.dark.png";
 import { ReactComponent as Character1 } from "../../../assets/elemental.green.1.svg";
 import styled from "styled-components";
-
 import { GameHeader } from "../../layout/Header";
 import RightSideMenu from "./RightSideMenu";
 import BottomSideMenu from "./BottomSideMenu";
 import MagicPowerBar from "./MagicPowerBar";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/config/configStore";
+import { useCharacter } from "../../../hooks/useCharacter";
+import ExpBar from "./ExpBar";
 
 interface GamePlayPageBlockProps {
   isNightTime: boolean;
@@ -27,13 +30,9 @@ const StyledDiv = styled.div`
   width: 100%;
   height: 100%;
   background-size: cover;
-`;
-
-const StyledCharacter = styled(Character1)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* This will center the character */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const GamePlayPageBlock = ({
@@ -54,12 +53,16 @@ const GamePlayPageBlock = ({
 const GamePlay = () => {
   const hour = new Date().getHours();
   const isNightTime = hour >= 18 || hour < 6;
-
+  const user = useSelector((state: RootState) => state.user);
+  const headerName = user?.data?.fairy?.name ?? "Leafy";
+  const Character = useCharacter(user);
+  console.log(user);
   return (
     <GamePlayPageBlock isNightTime={isNightTime}>
-      <GameHeader />
+      <GameHeader headerName={headerName} />
       <RightSideMenu />
-      <StyledCharacter />
+      <Character />
+      <ExpBar maxExp={100} />
       <BottomSideMenu />
       <LeftSide>
         <MagicPowerBar />
