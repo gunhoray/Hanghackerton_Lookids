@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import { Share } from '../../assets/icons/SVG';
 import { GameActionButton } from '../game/GameUI.style';
 import Modal from './Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { SUCCESS_MISSION } from '../../redux/modules/magicMissionSlice';
+import { RootState } from '../../redux/config/configStore';
 
 const ShareLinkStyle = styled.div`
     display: flex;
@@ -43,6 +46,8 @@ const SHARE_LINK = 'https://codepen.io/ayoisaiah/pen/YbNazJ';
 
 const ShareLink = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const dispatch = useDispatch();
+
     const onShareButtonClick = () => {
         if (navigator.share) {
             navigator
@@ -62,6 +67,7 @@ const ShareLink = () => {
     const onCopyLinkClick = async () => {
         try {
             await navigator.clipboard.writeText(SHARE_LINK);
+            dispatch(SUCCESS_MISSION('share'));
         } catch (err) {
             console.error('Failed to copy link: ', err);
         }
@@ -72,6 +78,7 @@ const ShareLink = () => {
             <GameActionButton onClick={onShareButtonClick}>
                 <Share />
             </GameActionButton>
+
             <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'공유하기'}>
                 <ShareBox>
                     <ShareLinkStyle>
