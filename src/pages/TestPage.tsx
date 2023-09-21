@@ -10,12 +10,14 @@ import Green1 from '../components/gamecharcter/Leafy';
 import FloweryGrow from '../components/gamecharcter/FloweryGrow';
 import MagicpowderReward from '../components/game/MagicpowderReward';
 import LeafyGrow from '../components/gamecharcter/LeafyGrow';
+import ShareLink from '../components/common/ShareLink';
 const TestPage = () => {
     return (
         <>
             <div
                 style={{
                     display: 'flex',
+                    flexWrap: 'wrap',
                     gap: '16px',
                 }}
             >
@@ -25,6 +27,7 @@ const TestPage = () => {
                 <MagicpowderReward />
                 <LevelUp />
                 <Menu />
+                <ShareLink />
             </div>
             <MySVGComponent />
             <Green1 />

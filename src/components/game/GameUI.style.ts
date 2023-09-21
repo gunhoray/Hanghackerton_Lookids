@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 type styleColor = {
-    $color: string;
+    $color?: string;
 };
 
 export const GameActionButton = styled.button<styleColor>`
