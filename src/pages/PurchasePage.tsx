@@ -1,12 +1,13 @@
 import React from 'react';
-import { GameHeader } from '../components/layout/Header';
+import { CommonHeader } from '../components/layout/Header';
 import Purchase from '../components/lookidsmain/Purchase';
+import { LookidsGlobalStyle } from '../components/lookidsmain/LookkidsGlobalStyle';
 const PurchasePage = () => {
     return (
         <div>
-            <GameHeader />
+            <LookidsGlobalStyle />
+            <CommonHeader />
             <Purchase />
-            PurchasePage
         </div>
     );
 };

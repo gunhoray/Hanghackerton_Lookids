@@ -8,6 +8,7 @@ import { MainHeader } from '../components/layout/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { TIME_INTERVAL } from '../redux/modules/toastSlice';
 import { RootState } from '../redux/config/configStore';
+import { LookidsGlobalStyle } from '../components/lookidsmain/LookkidsGlobalStyle';
 const MainPage = () => {
     const dispatch = useDispatch();
     const { time } = useSelector((state: RootState) => {
@@ -25,6 +26,7 @@ const MainPage = () => {
 
     return (
         <>
+            <LookidsGlobalStyle />
             <MainHeader />
             <TabBar />
             <LookList />
