@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { GameHeader } from "../../layout/Header";
 import RightSideMenu from "./RightSideMenu";
 import BottomSideMenu from "./BottomSideMenu";
+import MagicPowerBar from "./MagicPowerBar";
 
 interface GamePlayPageBlockProps {
   isNightTime: boolean;
@@ -53,6 +54,7 @@ const GamePlay = () => {
       <RightSideMenu />
       <StyledCharacter />
       <BottomSideMenu />
+      <MagicPowerBar />
     </GamePlayPageBlock>
   );
 };
