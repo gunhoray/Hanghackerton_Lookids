@@ -12,6 +12,11 @@ const LayoutStyle = styled.div`
     main {
         /* padding: 0 0.8rem; */
     }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 `;
 
 type LayoutProps = {

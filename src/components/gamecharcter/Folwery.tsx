@@ -113,7 +113,7 @@ const Ani = styled.div`
     }
 `;
 
-const MySVGComponent = () => {
+const Folwery = () => {
     return (
         <Ani>
             <svg
@@ -221,4 +221,4 @@ const MySVGComponent = () => {
     );
 };
 
-export default MySVGComponent;
+export default Folwery;

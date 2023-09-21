@@ -6,8 +6,8 @@ import Modal from '../common/Modal';
 import { ReactComponent as Character1 } from '../../assets/elemental.pink.1.svg';
 import { ReactComponent as Character2 } from '../../assets/elemental.green.1.svg';
 import useInput from '../../hooks/useInput';
-import MySVGComponent from '../gamecharcter/Pink1';
-import Green1 from '../gamecharcter/Green1';
+import MySVGComponent from '../gamecharcter/Folwery';
+import Green1 from '../gamecharcter/Leafy';
 const CharacterList = styled.ul`
     padding: 1.2rem 0.8rem;
     display: flex;

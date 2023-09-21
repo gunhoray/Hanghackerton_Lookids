@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Ani = styled.div`
-    width: 100%;
-    height: auto;
+type charcterProps = {
+    height?: string;
+};
+
+const Ani = styled.div<charcterProps>`
+    width: ${(props) => (props.height ? 'auto' : '100%')};
+    height: ${(props) => props.height || 'auto'};
     svg {
         /* animation: body 3s infinite ease-in; */
         /* transform-origin: 50% 100%; */
+        height: ${(props) => props.height || 'auto'};
     }
     .stpg0 {
         fill: #ffcc99;
@@ -63,40 +68,6 @@ const Ani = styled.div`
         opacity: 0.3;
         fill: #ff00cc;
         enable-background: new;
-    }
-    #eyes-left,
-    #eyes-right {
-        animation: eyes-ani 5s infinite ease-in-out;
-    }
-    @keyframes eyes-ani {
-        0% {
-            transform: translate(10px, 0px);
-        }
-        30% {
-            transform: translate(10px, 20px);
-        }
-        60% {
-            transform: translate(0px, 10px);
-        }
-        90% {
-            transform: translate(0px, 0px);
-        }
-        100% {
-            transform: translate(10px, 0px);
-        }
-    }
-    #mouse {
-        animation: mouse-ani 5s infinite ease-in-out;
-    }
-    @keyframes mouse-ani {
-        0% {
-            height: 10px;
-        }
-        100% {
-            height: 20px;
-
-            /* transform: scale(1.4); */
-        }
     }
     .hair-left {
         animation: FG-head-ani-1 3s infinite ease-in;
@@ -158,21 +129,11 @@ const Ani = styled.div`
             transform: rotate(0deg);
         }
     }
-    @keyframes body {
-        0% {
-            transform: rotate(-2deg);
-        }
-        60% {
-            transform: rotate(5deg);
-        }
-        100% {
-            transform: rotate(-2deg);
-        }
-    }
 `;
-const FloweryGrow = () => {
+
+const FloweryGrow = ({ height }: charcterProps) => {
     return (
-        <Ani>
+        <Ani height={height}>
             <svg
                 version="1.1"
                 id="Layer_1"

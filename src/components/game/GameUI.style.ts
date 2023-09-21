@@ -17,6 +17,16 @@ export const GameActionButton = styled.button<styleColor>`
     gap: 4px;
     font-size: 12px;
     color: ${(props) => props.$color || '#000'};
+    position: relative;
+    .can-get-reward {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 12px;
+        height: 12px;
+        background-color: red;
+        border-radius: 50%;
+    }
 `;
 export const RewardList = styled.ul`
     width: 100%;
