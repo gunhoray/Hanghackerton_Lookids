@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { MagicPowder } from "../../../assets/icons/GameIcon";
+import { BigMagicPowder } from "../../../assets/icons/GameIcon";
+
+const MagicPowderDescription = styled.p`
+  font-size: 12px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: orange;
+  margin-top: 5px;
+`;
+
 const MagicPowerBarStyle = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,18 +21,31 @@ const MagicPowerBarStyle = styled.div`
 `;
 const BarContainer = styled.div`
   width: 20px;
-  height: 200px;
+  height: 100px;
   border-radius: 5px;
-  padding: 1%;
+  padding: 3%;
   background-color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
+  margin-top: -10px;
+  z-index: -2;
 `;
-
+const BarContainer2 = styled.div`
+  width: 20px;
+  height: 120px;
+  border-radius: 5px;
+  padding: 3%;
+  background-color: white;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin-top: -10px;
+  z-index: -2;
+`;
 const FilledBar = styled.div`
   background-color: orange;
-  width: 100%;
+  width: 80%;
   border-radius: 5px;
 `;
 
@@ -53,10 +77,13 @@ const MagicPowerBar = () => {
 
   return (
     <MagicPowerBarStyle>
-      <MagicPowder />
-      <BarContainer>
-        <FilledBar style={{ height: `${fillPercentage}%` }} />
-      </BarContainer>
+      <BigMagicPowder />
+      <BarContainer2>
+        <BarContainer>
+          <FilledBar style={{ height: `${fillPercentage}%` }} />
+        </BarContainer>
+      </BarContainer2>
+      <MagicPowderDescription>마법효과*2</MagicPowderDescription>
       <TimerText>
         {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </TimerText>

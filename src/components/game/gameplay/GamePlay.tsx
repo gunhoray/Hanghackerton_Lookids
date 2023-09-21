@@ -13,6 +13,13 @@ interface GamePlayPageBlockProps {
   children?: React.ReactNode;
 }
 
+const LeftSide = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+`;
+
 const StyledDiv = styled.div`
   position: absolute;
   top: 0;
@@ -54,7 +61,9 @@ const GamePlay = () => {
       <RightSideMenu />
       <StyledCharacter />
       <BottomSideMenu />
-      <MagicPowerBar />
+      <LeftSide>
+        <MagicPowerBar />
+      </LeftSide>
     </GamePlayPageBlock>
   );
 };
