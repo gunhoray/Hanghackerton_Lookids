@@ -1,11 +1,10 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Share } from '../../assets/icons/SVG';
 import { GameActionButton } from '../game/GameUI.style';
 import Modal from './Modal';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SUCCESS_MISSION } from '../../redux/modules/magicMissionSlice';
-import { RootState } from '../../redux/config/configStore';
 
 const ShareLinkStyle = styled.div`
     display: flex;

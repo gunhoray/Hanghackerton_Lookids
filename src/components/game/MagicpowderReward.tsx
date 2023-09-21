@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GameActionButton } from './GameUI.style';
-import { MagicPowder, Water } from '../../assets/icons/GameIcon';
+import { MagicPowder } from '../../assets/icons/GameIcon';
 import BottomSheet, {
     MissionButton,
     MissionIcon,

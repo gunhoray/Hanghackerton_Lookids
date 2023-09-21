@@ -29,7 +29,7 @@ const Menu = () => {
             {isOpen && (
                 <BottomSheet
                     isOpen={isOpen}
-                    setIsOpen={setIsShow}
+                    setIsOpen={setIsOpen}
                     isShow={isShow}
                     setIsShow={setIsShow}
                     actionTitle={'메뉴'}

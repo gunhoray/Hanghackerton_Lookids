@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AttendanceReward from '../components/game/AttendanceReward';
-import AccessThreeReward from '../components/game/AccessThreeReward';
 import WaterReward from '../components/game/WaterReward';
-import { Heart } from '../assets/icons/GameIcon';
 import Menu from '../components/layout/Menu';
 import LevelUp from '../components/game/LevelUp';
 import MySVGComponent from '../components/gamecharcter/Folwery';

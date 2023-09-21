@@ -18,4 +18,5 @@ type user = {
 
 export const deleteUser = async ({ userId }: user) => {
     const response = await axios.delete(`${process.env.REACT_APP_SERVER}/users/${userId}`);
+    return response.data;
 };
