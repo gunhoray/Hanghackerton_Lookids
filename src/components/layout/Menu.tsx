@@ -9,7 +9,7 @@ import BottomSheet, {
 } from '../common/BottomSheet';
 import { Book, Bullhorn, KebabMenuUI, LogoutIcon } from '../../assets/icons/SVG';
 import { IconBox } from './Header';
-import { deleteUser } from '../../apis/AuthApi';
+import { deleteUser } from '../../apis/AuthApi';
 const Menu = () => {
     const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(
         false,

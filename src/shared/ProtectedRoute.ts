@@ -1,38 +1,38 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import { useDispatch } from "react-redux";
-import { fetchUser } from "../apis/\bAuthApi";
+import { useDispatch } from 'react-redux';
+import { fetchUser } from '../apis/AuthApi';
 
 interface UserRouteProps {
-  element: React.ReactNode;
-  path: string;
+    element: React.ReactNode;
+    path: string;
 }
 
 const UserRoute: React.FC<UserRouteProps> = ({ element, path }) => {
-  const navigate = useNavigate();
-  const [authentication, setAuthentication] = useState(false);
-  const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [authentication, setAuthentication] = useState(false);
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const LoginStatusCheck = async () => {
-      try {
-        const loginStatus = await fetchUser();
-        setAuthentication(loginStatus);
-        if (!loginStatus) {
-          // dispatch(setRedirectUrl(path));
-          navigate("/login");
-        }
-      } catch (error) {
-        console.error("Error occurred while fetching user:", error);
-        navigate("/login");
-      }
-    };
+    useEffect(() => {
+        const LoginStatusCheck = async () => {
+            try {
+                const loginStatus = await fetchUser();
+                setAuthentication(loginStatus);
+                if (!loginStatus) {
+                    // dispatch(setRedirectUrl(path));
+                    navigate('/login');
+                }
+            } catch (error) {
+                console.error('Error occurred while fetching user:', error);
+                navigate('/login');
+            }
+        };
 
-    LoginStatusCheck();
-  }, [navigate]);
+        LoginStatusCheck();
+    }, [navigate]);
 
-  return authentication ? element : null;
+    return authentication ? element : null;
 };
 
 export default UserRoute;

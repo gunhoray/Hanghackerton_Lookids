@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GameActionButton } from './GameUI.style';
 import { MagicPowder } from '../../assets/icons/GameIcon';
 import BottomSheet, {
@@ -17,17 +17,56 @@ import {
     SuccessKeys,
 } from '../../redux/modules/magicMissionSlice';
 import { useNavigate } from 'react-router-dom';
+import { useMutation, useQueryClient } from 'react-query';
+import { clearMission } from '../../apis/fairy';
 // import { styled } from 'styled-components';
 
 const MagicpowderReward = () => {
+    const [getRewardIcon, setGetRewardIcon] = useState<boolean>(false);
     const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(
         false,
         false
     );
 
+    const { clearedShareMission, clearedAttendanceMission, clearedPurchaseMission } = useSelector(
+        (state: RootState) => {
+            return state.user.data.fairy;
+        }
+    );
+
     const { share, purchase, attendance } = useSelector((state: RootState) => {
         return state.magicMission.success;
     });
+
+    useEffect(() => {
+        if (clearedShareMission) {
+            dispatch(GET_REWARD_MISSION('share'));
+        }
+        if (clearedPurchaseMission) {
+            dispatch(GET_REWARD_MISSION('purchase'));
+        }
+        if (clearedAttendanceMission) {
+            dispatch(GET_REWARD_MISSION('attendance'));
+        }
+    }, []);
+
+    useEffect(() => {
+        const state = [share, purchase, attendance];
+        let isSuccess = false;
+        for (let i = 0; i < state.length; i++) {
+            if (state[i] === 'success') {
+                console.log(state[i]);
+                isSuccess = true;
+                break;
+            }
+        }
+        if (isSuccess) {
+            setGetRewardIcon(true);
+        } else {
+            setGetRewardIcon(false);
+        }
+    }, [share, purchase, attendance]);
+
     const dispatch = useDispatch();
     const nav = useNavigate();
     const shareMissionHandler = () => {
@@ -43,6 +82,7 @@ const MagicpowderReward = () => {
     return (
         <>
             <GameActionButton onClick={onClickShowHandler} $color="#FF9548">
+                {getRewardIcon && <span className="can-get-reward"></span>}
                 <MagicPowder />
                 마법가루
             </GameActionButton>
@@ -59,7 +99,6 @@ const MagicpowderReward = () => {
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>공유하기</MissionText>
-                                {/* <MissionButton onClick={() => GetRewardHandler('share')}> */}
                                 <MagicpowderButton
                                     state={share}
                                     buttonText={'바로가기'}
@@ -110,8 +149,15 @@ type buttonProps = {
 
 const MagicpowderButton = ({ state, buttonText, mission, missionEvent }: buttonProps) => {
     const dispatch = useDispatch();
+    const queryClient = useQueryClient();
 
+    const mutation = useMutation((mission: SuccessKeys) => clearMission(mission), {
+        onSuccess: (data) => {
+            queryClient.invalidateQueries('user');
+        },
+    });
     const GetRewardHandler = (mission: SuccessKeys) => {
+        mutation.mutate(mission);
         dispatch(GET_REWARD_MISSION(mission));
     };
     switch (state) {
