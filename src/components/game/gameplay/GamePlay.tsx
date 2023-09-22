@@ -12,6 +12,7 @@ import { useCharacter } from '../../../hooks/useCharacter';
 import ExpBar from './ExpBar';
 import SpeechBubble from './SpeechBubble';
 import useSpeech from '../../../hooks/useSpeech';
+import LevelUp from '../LevelUp';
 
 interface GamePlayPageBlockProps {
     isNightTime: boolean;
@@ -88,6 +89,7 @@ const GamePlay = () => {
             <LeftSide>
                 <MagicPowerBar />
             </LeftSide>
+            <LevelUp />
         </GamePlayPageBlock>
     );
 };

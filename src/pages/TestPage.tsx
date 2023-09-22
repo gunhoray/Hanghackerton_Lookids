@@ -24,7 +24,7 @@ const TestPage = () => {
                 {/* <AccessThreeReward /> */}
                 <WaterReward />
                 <MagicpowderReward />
-                <LevelUp />
+                {/* <LevelUp /> */}
                 <Menu />
                 <ShareLink />
             </div>

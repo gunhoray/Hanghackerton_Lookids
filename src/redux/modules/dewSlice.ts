@@ -12,9 +12,9 @@ interface magicMissionState {
 const initialState: magicMissionState = {
     success: {
         trend: 'yet',
-        event: 'yet',
-        newItem: 'yet',
-        resell: 'yet',
+        event: 'success',
+        newItem: 'success',
+        resell: 'success',
     },
 };
 

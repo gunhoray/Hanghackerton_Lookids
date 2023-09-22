@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { GameActionButton, RewardItem, RewardList, RewordBox, RewordText } from './GameUI.style';
-import { MagicPowder, Water } from '../../assets/icons/GameIcon';
+import { MagicPowder, MoneyReward, Water } from '../../assets/icons/GameIcon';
 import Modal from '../common/Modal';
 import Button from '../common/Button';
 import { styled } from 'styled-components';
 import { ReactComponent as Character1 } from '../../assets/elemental.pink.2.svg';
 import { Form } from './GameCreate';
 import FloweryGrow from '../gamecharcter/FloweryGrow';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/config/configStore';
 
 const RewordPoint = styled.div`
     width: 100%;
@@ -69,21 +71,31 @@ const LevelupEffect = styled.div`
     }
 `;
 
+interface levelProps {
+    isOpen: boolean;
+    setIsOpen: any;
+}
+
 const LevelUp = () => {
-    const [isOpen, setIsOpen] = useState<boolean>(true);
-    const onClickCreateHandler = () => {
-        setIsOpen(!isOpen);
-    };
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const levelRef = useRef();
+    const { level } = useSelector((state: RootState) => {
+        return state.user.data.fairy;
+    });
+
+    useEffect(() => {
+        if (levelRef.current === 1 && level > levelRef.current) {
+            setIsOpen(!isOpen);
+        }
+        levelRef.current = level;
+    }, [level]);
+
     const onSubmitHandler = () => {
-        alert('submit');
         setIsOpen(!isOpen);
     };
+
     return (
         <>
-            <GameActionButton onClick={onClickCreateHandler} $color="#FF9548">
-                <MagicPowder />
-                레벨업 test
-            </GameActionButton>
             <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'Level up!'}>
                 <Form action="" onSubmit={onSubmitHandler}>
                     <p className="explanation">축하합니다~ 추카합니다~~~</p>
@@ -97,12 +109,8 @@ const LevelUp = () => {
                     <RewordPoint>
                         <RewordBox>
                             <div>
-                                <Water />
-                                <RewordText>3개</RewordText>
-                            </div>
-                            <div>
-                                <MagicPowder />
-                                <RewordText>3개</RewordText>
+                                <MoneyReward />
+                                <RewordText>5000 포인트</RewordText>
                             </div>
                         </RewordBox>
                     </RewordPoint>

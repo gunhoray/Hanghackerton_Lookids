@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+    ALLReward,
     Calender,
     FailReward,
     GetReward,
@@ -26,21 +27,22 @@ import { fetchUserSuccess } from '../../redux/modules/userSlice';
 const rewardData = [
     {
         day: '월요일',
-        items: [{ name: 'Water', count: 3 }],
+        items: [{ name: 'All', count: 1 }],
         past: true,
         received: false,
     },
     {
         day: '화요일',
-        items: [{ name: 'Water', count: 3 }],
+        items: [{ name: 'All', count: 1 }],
         past: true,
         received: true,
     },
     {
         day: '수요일',
         items: [
-            { name: 'Water', count: 3 },
+            { name: 'Water', count: 1 },
             { name: 'MagicPowder', count: 1 },
+            { name: 'Heart', count: 1 },
         ],
         past: true,
         received: false,
@@ -48,8 +50,9 @@ const rewardData = [
     {
         day: '목요일',
         items: [
-            { name: 'Water', count: 3 },
+            { name: 'Water', count: 1 },
             { name: 'MagicPowder', count: 1 },
+            { name: 'Heart', count: 1 },
         ],
         past: true,
         received: false,
@@ -57,8 +60,9 @@ const rewardData = [
     {
         day: '금요일',
         items: [
-            { name: 'Water', count: 3 },
+            { name: 'Water', count: 1 },
             { name: 'MagicPowder', count: 1 },
+            { name: 'Heart', count: 1 },
         ],
         past: true,
         received: false,
@@ -66,8 +70,9 @@ const rewardData = [
     {
         day: '토요일',
         items: [
-            { name: 'Water', count: 3 },
+            { name: 'Water', count: 1 },
             { name: 'MagicPowder', count: 1 },
+            { name: 'Heart', count: 1 },
         ],
         past: true,
         received: false,
@@ -75,8 +80,9 @@ const rewardData = [
     {
         day: '일요일',
         items: [
-            { name: 'Water', count: 3 },
+            { name: 'Water', count: 1 },
             { name: 'MagicPowder', count: 1 },
+            { name: 'Heart', count: 1 },
         ],
         past: true,
         received: false,
@@ -150,6 +156,15 @@ const AttendanceReward = () => {
                         출석체크를 하면 이로로요로로 좋아좋아 뭔가 좋아 좋을 것 같기도우오오오
                     </p>
                     <RewardList>
+                        {/* <RewardItem>
+                            월요일
+                            <RewordBox>
+                                <div>
+                                    <ALLReward />
+                                    <RewordText>1+1+1개</RewordText>
+                                </div>
+                            </RewordBox>
+                        </RewardItem> */}
                         {rewardData.map((day, index) => (
                             <RewardItem
                                 key={`attendance-reward-${index}`}
@@ -174,15 +189,28 @@ const AttendanceReward = () => {
                                     ) : (
                                         day.items.map((item, itemIndex) => (
                                             <React.Fragment key={itemIndex}>
-                                                {item.name === 'Water' && (
+                                                {item.name === 'ALL' && (
                                                     <div>
-                                                        <Water />
+                                                        <ALLReward />
+                                                        <RewordText>1+1+1개</RewordText>
+                                                    </div>
+                                                )}
+
+                                                {item.name === 'Heart' && (
+                                                    <div>
+                                                        <Heart />
                                                         <RewordText>{item.count}개</RewordText>
                                                     </div>
                                                 )}
                                                 {item.name === 'MagicPowder' && (
                                                     <div>
                                                         <MagicPowder />
+                                                        <RewordText>{item.count}개</RewordText>
+                                                    </div>
+                                                )}
+                                                {item.name === 'Water' && (
+                                                    <div>
+                                                        <Water />
                                                         <RewordText>{item.count}개</RewordText>
                                                     </div>
                                                 )}

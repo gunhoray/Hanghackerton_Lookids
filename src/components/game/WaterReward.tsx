@@ -51,7 +51,7 @@ const WaterReward = () => {
         if (clearedResellMission) {
             dispatch(DEW_GET_REWARD_MISSION('resell'));
         }
-    }, []);
+    }, [clearedTrendMission, clearedEventMission, clearedNewMission, clearedResellMission]);
 
     const nav = useNavigate();
     const dispatch = useDispatch();
@@ -63,6 +63,15 @@ const WaterReward = () => {
             queryClient.invalidateQueries('user');
         },
     });
+
+    const EXGetRewardHandler = (mission: dewSuccessKeys) => {
+        if (mission === 'newItem') {
+            mutation.mutate('new');
+        } else {
+            mutation.mutate(mission);
+        }
+        dispatch(DEW_GET_REWARD_MISSION(mission));
+    };
 
     return (
         <>
@@ -96,21 +105,36 @@ const WaterReward = () => {
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>이벤트 구경하기</MissionText>
-                                <MissionButton $color={'#efefef'}>바로 가기</MissionButton>
+                                <DewButton
+                                    state={event}
+                                    buttonText={'바로가기'}
+                                    mission={'event'}
+                                    route={'/'}
+                                />
                             </div>
                         </MissionItem>
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>신상마켓 구경하기</MissionText>
-                                <MissionButton $color={'#efefef'}>바로 가기</MissionButton>
+                                <DewButton
+                                    state={newItem}
+                                    buttonText={'바로가기'}
+                                    mission={'newItem'}
+                                    route={'/'}
+                                />
                             </div>
                         </MissionItem>
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>리셀마켓 구경하기</MissionText>
-                                <MissionButton $color={'#efefef'}>바로 가기</MissionButton>
+                                <DewButton
+                                    state={resell}
+                                    buttonText={'바로가기'}
+                                    mission={'resell'}
+                                    route={'/'}
+                                />
                             </div>
                         </MissionItem>
                     </MissionList>
@@ -136,7 +160,7 @@ const DewButton = ({ state, buttonText, mission, route, missionEvent }: buttonPr
     const { page, time, getReward } = useSelector((state: RootState) => {
         return state.toast;
     });
-    const mutation = useMutation((mission: dewSuccessKeys) => clearMission(mission), {
+    const mutation = useMutation((mission: string) => clearMission(mission), {
         onSuccess: (data) => {
             queryClient.invalidateQueries('user');
         },
@@ -149,13 +173,18 @@ const DewButton = ({ state, buttonText, mission, route, missionEvent }: buttonPr
         dispatch(DEW_TIME_MISSION(mission));
     };
     const GetRewardHandler = (mission: dewSuccessKeys) => {
-        mutation.mutate(mission);
-        dispatch(DEW_GET_REWARD_MISSION(mission));
-        dispatch(CLEAR_TIME());
+        if (mission === 'newItem') {
+            mutation.mutate('new');
+        } else {
+            mutation.mutate(mission);
+        }
+        if (mission === 'trend') {
+            dispatch(CLEAR_TIME());
+        }
     };
     useEffect(() => {
         if (time === 0) {
-            dispatch(DEW_SUCCESS_MISSION(mission));
+            dispatch(DEW_SUCCESS_MISSION('trend'));
         }
     }, []);
     switch (state) {
