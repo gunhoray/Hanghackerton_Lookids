@@ -34,8 +34,8 @@ const Menu = () => {
   const deleteUserHandler = () => {
     // const userId = id;
     deleteUser(id);
+    localStorage.clear();
     navigate("/");
-
     // mutation.mutate(id);
   };
   const handleLogout = () => {

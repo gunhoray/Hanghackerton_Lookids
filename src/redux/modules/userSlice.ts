@@ -19,6 +19,7 @@ const userSlice = createSlice({
     fetchUserSuccess(state, action: PayloadAction<any>) {
       state.status = "succeeded";
       state.data = action.payload;
+      console.log(initialState);
     },
 
     fetchUserFailure(state, action: PayloadAction<string>) {
