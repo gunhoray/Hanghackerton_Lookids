@@ -1,31 +1,46 @@
-import React from 'react';
+import React from "react";
 import BottomSheet, {
-    MissionButton,
-    MissionIcon,
-    MissionItem,
-    MissionList,
-    MissionText,
-    useBottomSheet,
-} from '../common/BottomSheet';
-import { Book, Bullhorn, KebabMenuUI, LogoutIcon } from '../../assets/icons/SVG';
-import { IconBox } from './Header';
-import { deleteUser } from '../../apis/AuthApi';
+  MissionButton,
+  MissionIcon,
+  MissionItem,
+  MissionList,
+  MissionText,
+  useBottomSheet,
+} from "../common/BottomSheet";
+import {
+  Book,
+  Bullhorn,
+  KebabMenuUI,
+  LogoutIcon,
+} from "../../assets/icons/SVG";
+import { IconBox } from "./Header";
+import { deleteUser } from "../../apis/AuthApi";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { RESET_STATE } from "../../redux/modules/heartToastSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/config/configStore";
+
 const Menu = () => {
   const navigate = useNavigate();
   const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } =
     useBottomSheet(false, false);
+
   const dispatch = useDispatch();
+
+  const { id } = useSelector((state: RootState) => {
+    return state.user.data;
+  });
+
   const deleteUserHandler = () => {
-    const userId = 1235468;
-    deleteUser({ userId });
+    // const userId = id;
+    deleteUser(id);
+    navigate("/");
+
+    // mutation.mutate(id);
   };
   const handleLogout = () => {
     // 로그아웃 시 localStorage를 비우는 코드
     localStorage.clear();
-    dispatch(RESET_STATE());
     navigate("/");
     console.log("logout");
     // 로그아웃 후 페이지 리디렉션 등의 추가적인 작업이 필요하다면 이곳에 작성합니다.
