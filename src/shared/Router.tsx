@@ -7,6 +7,7 @@ import TestPage from "../pages/TestPage";
 import GamePlay from "../components/game/gameplay/GamePlay";
 import PurchasePage from "../pages/PurchasePage";
 import ProtectedRoute from "./ProtectedRoute";
+
 const Router = () => {
   return (
     <BrowserRouter>

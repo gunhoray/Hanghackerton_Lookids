@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 interface AxiosCustomHeaders {
@@ -24,8 +23,10 @@ const Oauth: React.FC = () => {
   const code = new URL(window.location.href).searchParams.get("code");
   // console.log(code);
   const navigate = useNavigate();
+  const startTime = Date.now();
+  const expirationTime = startTime + 1 * 60 * 1000;
 
-  const dispatch = useDispatch();
+  // console.log(expirationTime);
   useEffect(() => {
     (async () => {
       try {
@@ -44,9 +45,11 @@ const Oauth: React.FC = () => {
         localStorage.setItem("Access", access);
         localStorage.setItem("Refresh", refresh);
         // console.log(res);
-        navigate("/");
         if (access && refresh !== "") {
+          localStorage.setItem("RewardStartTime", startTime.toString());
+          localStorage.setItem("RewardExpiredTime", expirationTime.toString());
         }
+        navigate("/");
       } catch (e) {
         // console.error(e);
         navigate("/");
