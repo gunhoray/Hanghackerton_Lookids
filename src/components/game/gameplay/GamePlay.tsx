@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/config/configStore";
 import { useCharacter } from "../../../hooks/useCharacter";
 import ExpBar from "./ExpBar";
+import LogoutButton from "../../lookidslogin/Logout";
 
 interface GamePlayPageBlockProps {
   isNightTime: boolean;
@@ -66,6 +67,7 @@ const GamePlay = () => {
       <BottomSideMenu />
       <LeftSide>
         <MagicPowerBar />
+        <LogoutButton />
       </LeftSide>
     </GamePlayPageBlock>
   );

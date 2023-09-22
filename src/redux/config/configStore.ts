@@ -3,11 +3,13 @@ import toastReducer from '../modules/toastSlice';
 import magicMissionReducer from '../modules/magicMissionSlice';
 import userSlice from '../modules/userSlice';
 import speechBubbleReducer from '../modules/speechBubbleSlice';
+import heartToastSlice from "../modules/heartToastSlice";
 const rootReducer = combineReducers({
-    toast: toastReducer,
-    user: userSlice,
-    magicMission: magicMissionReducer,
-    speechBubble: speechBubbleReducer,
+  toast: toastReducer,
+  user: userSlice,
+  magicMission: magicMissionReducer,
+  speechBubble: speechBubbleReducer,
+  heartToast: heartToastSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

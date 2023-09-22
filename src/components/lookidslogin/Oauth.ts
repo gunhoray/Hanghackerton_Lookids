@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 interface AxiosCustomHeaders {
@@ -13,9 +14,9 @@ interface CustomAxiosResponse extends AxiosResponse {
 }
 
 // accessToken
-// : 
+// :
 // isSignUp
-// : 
+// :
 // refreshToken
 // :
 
@@ -24,6 +25,7 @@ const Oauth: React.FC = () => {
   // console.log(code);
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
       try {
@@ -43,6 +45,8 @@ const Oauth: React.FC = () => {
         localStorage.setItem("Refresh", refresh);
         // console.log(res);
         navigate("/");
+        if (access && refresh !== "") {
+        }
       } catch (e) {
         // console.error(e);
         navigate("/");

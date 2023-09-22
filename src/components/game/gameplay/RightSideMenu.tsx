@@ -1,7 +1,7 @@
 import AttendanceReward from "../AttendanceReward";
 import AccessThreeReward from "../AccessThreeReward";
 import WaterReward from "../WaterReward";
-import RewardTimer from "./RewardTimer";
+import HeartRewardTimer from "./HeartRewardTimer";
 import styled from "styled-components";
 
 const RightsideMenu = styled.div`
@@ -18,7 +18,7 @@ const RightSideMenu = () => {
       <AttendanceReward />
       <WaterReward />
       <AccessThreeReward />
-      <RewardTimer />
+      <HeartRewardTimer />
     </RightsideMenu>
   );
 };
