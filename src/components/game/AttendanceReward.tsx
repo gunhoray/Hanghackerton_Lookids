@@ -17,6 +17,11 @@ import {
 import Modal from '../common/Modal';
 import Button from '../common/Button';
 import { Form } from './GameCreate';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/config/configStore';
+import { useMutation, useQueryClient } from 'react-query';
+import { clearMission } from '../../apis/fairy';
+import { fetchUserSuccess } from '../../redux/modules/userSlice';
 
 const rewardData = [
     {
@@ -37,7 +42,7 @@ const rewardData = [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
         ],
-        past: false,
+        past: true,
         received: false,
     },
     {
@@ -46,7 +51,7 @@ const rewardData = [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
         ],
-        past: false,
+        past: true,
         received: false,
     },
     {
@@ -55,7 +60,7 @@ const rewardData = [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
         ],
-        past: false,
+        past: true,
         received: false,
     },
     {
@@ -64,7 +69,7 @@ const rewardData = [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
         ],
-        past: false,
+        past: true,
         received: false,
     },
     {
@@ -73,18 +78,63 @@ const rewardData = [
             { name: 'Water', count: 3 },
             { name: 'MagicPowder', count: 1 },
         ],
-        past: false,
+        past: true,
         received: false,
     },
 ];
 
 const AttendanceReward = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const {
+        clearedSUNMission,
+        clearedMONMission,
+        clearedTUEMission,
+        clearedWEDMission,
+        clearedTHUMission,
+        clearedFRIMission,
+        clearedSATMission,
+    } = useSelector((state: RootState) => {
+        return state.user.data.fairy;
+    });
+
+    // 현재 날짜를 가져옵니다.
+    const today = new Date();
+    const clearMissionList = [
+        clearedMONMission,
+        clearedTUEMission,
+        clearedWEDMission,
+        clearedTHUMission,
+        clearedFRIMission,
+        clearedSATMission,
+        clearedSUNMission,
+    ];
+
+    const dayOfWeek = today.getDay() - 1;
+    const missionDayOfWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+    for (let i = dayOfWeek; i <= rewardData.length; i++) {
+        if (rewardData[i]) {
+            rewardData[i].past = false;
+        }
+    }
+    for (let j = 0; j < rewardData.length; j++) {
+        if (rewardData[j]) {
+            rewardData[j].received = clearMissionList[j];
+        }
+    }
     const onClickCreateHandler = () => {
         setIsOpen(!isOpen);
     };
+    const queryClient = useQueryClient();
+
+    const mutation = useMutation((missionType: string) => clearMission(missionType), {
+        onSuccess: (data) => {
+            queryClient.invalidateQueries('user');
+        },
+    });
+
     const onSubmitHandler = () => {
-        alert('submit');
+        const clearDayOfWeek = missionDayOfWeek[dayOfWeek];
+        mutation.mutate(clearDayOfWeek);
         setIsOpen(!isOpen);
     };
     return (
@@ -102,11 +152,25 @@ const AttendanceReward = () => {
                         {rewardData.map((day, index) => (
                             <RewardItem
                                 key={`attendance-reward-${index}`}
-                                className={day.past ? 'past' : ''}
+                                className={
+                                    day.past || day.received
+                                        ? 'past'
+                                        : index === dayOfWeek
+                                        ? 'today'
+                                        : ''
+                                }
                             >
                                 {day.day}
                                 <RewordBox>
-                                    {!day.past ? (
+                                    {day.received ? (
+                                        <React.Fragment>
+                                            <GetReward />
+                                        </React.Fragment>
+                                    ) : day.past ? (
+                                        <React.Fragment>
+                                            <FailReward />
+                                        </React.Fragment>
+                                    ) : (
                                         day.items.map((item, itemIndex) => (
                                             <React.Fragment key={itemIndex}>
                                                 {item.name === 'Water' && (
@@ -123,20 +187,18 @@ const AttendanceReward = () => {
                                                 )}
                                             </React.Fragment>
                                         ))
-                                    ) : day.received ? (
-                                        <React.Fragment>
-                                            <GetReward />
-                                        </React.Fragment>
-                                    ) : (
-                                        <React.Fragment>
-                                            <FailReward />
-                                        </React.Fragment>
                                     )}
                                 </RewordBox>
                             </RewardItem>
                         ))}
                     </RewardList>
-                    <Button type="submit">보상 받기</Button>
+                    {/* {rewardData[dayOfWeek].received ? ( */}
+                    <Button type="submit" disabled={rewardData[dayOfWeek].received}>
+                        {rewardData[dayOfWeek].received ? '보상 받음' : '보상 받기'}
+                    </Button>
+                    {/* ) : ( */}
+                    {/* <Button type="submit">보상 받기</Button> */}
+                    {/* )} */}
                 </Form>
             </Modal>
         </>

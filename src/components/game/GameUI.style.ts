@@ -63,6 +63,9 @@ export const RewardItem = styled.li`
     &.past {
         background-color: #b5b5b5;
     }
+    &.today {
+        background-color: #d6ffbb;
+    }
     &.active-now {
         background-color: #ffe8c7;
     }
