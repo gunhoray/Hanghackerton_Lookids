@@ -7,8 +7,8 @@ export const fetchUser = async () => {
             Authorization: `Bearer ${accessToken}`,
         },
     });
-    console.log(accessToken);
-    console.log(response);
+    // console.log(accessToken);
+    console.log(response.data);
     return response.data;
 };
 
@@ -17,6 +17,6 @@ type user = {
 };
 
 export const deleteUser = async (userId: number) => {
-    const response = await axios.delete(`${process.env.REACT_APP_SERVER}/users/${userId}`);
+    const response = await axios.delete(`${process.env.REACT_APP_SERVER}/users/delete/${userId}`);
     return response.data;
 };

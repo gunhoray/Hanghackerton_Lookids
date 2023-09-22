@@ -10,12 +10,14 @@ import BottomSheet, {
 import { Book, Bullhorn, KebabMenuUI, LogoutIcon } from '../../assets/icons/SVG';
 import { IconBox } from './Header';
 import { deleteUser } from '../../apis/AuthApi';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/config/configStore';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
+import { fetchUserOut } from '../../redux/modules/userSlice';
 const Menu = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(
         false,
         false
@@ -24,23 +26,28 @@ const Menu = () => {
     const { id } = useSelector((state: RootState) => {
         return state.user.data;
     });
+    // const queryClient = useQueryClient();
+
     // const mutation = useMutation((userId: number) => deleteUser(userId), {
     //     onSuccess: (data) => {
+    //         queryClient.invalidateQueries('user');
     //     },
     // });
     const deleteUserHandler = () => {
         // const userId = id;
+        localStorage.clear();
+        // mutation.mutate(id);
+        dispatch(fetchUserOut());
         deleteUser(id);
         navigate('/');
-
-        // mutation.mutate(id);
     };
 
     const handleLogout = () => {
         // 로그아웃 시 localStorage를 비우는 코드
         localStorage.clear();
+        dispatch(fetchUserOut());
         navigate('/');
-        console.log('logout');
+        // console.log('logout');
         // 로그아웃 후 페이지 리디렉션 등의 추가적인 작업이 필요하다면 이곳에 작성합니다.
     };
     return (
