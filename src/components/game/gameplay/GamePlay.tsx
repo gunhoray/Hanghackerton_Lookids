@@ -75,7 +75,7 @@ const GamePlay = () => {
   const headerName = user?.data?.fairy?.name ?? "Leafy";
   const Character = useCharacter(user);
   const { speechEvent } = useSpeech(speech);
-
+console.log(user);
   return (
     <GamePlayPageBlock isNightTime={isNightTime}>
       <GameHeader headerName={headerName} />

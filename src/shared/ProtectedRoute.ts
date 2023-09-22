@@ -19,8 +19,9 @@ const UserRoute: React.FC<UserRouteProps> = ({ element, path }) => {
     const LoginStatusCheck = async () => {
       try {
         const loginStatus = await fetchUser();
+
         setAuthentication(loginStatus);
-        dispatch(fetchUserSuccess(loginStatus));
+        // dispatch(fetchUserSuccess(loginStatus));
         console.log(loginStatus);
         if (!loginStatus) {
           // dispatch(setRedirectUrl(path));
