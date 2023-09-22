@@ -21,7 +21,7 @@ const MagicPowerBarStyle = styled.div`
 `;
 const BarContainer = styled.div`
   width: 20px;
-  height: 100px;
+  height: 110px;
   border-radius: 5px;
   padding: 3%;
   background-color: white;
@@ -49,31 +49,12 @@ const FilledBar = styled.div`
   border-radius: 5px;
 `;
 
-const TimerText = styled.p`
-  text-align: center;
-  font-size: 14px;
-  margin-top: 10px;
-  color: orange;
-`;
-
 const MagicPowerBar = () => {
   const [fillPercentage, setFillPercentage] = useState(100);
-  const [timeLeft, setTimeLeft] = useState(10 * 60); // 초 단위로 설정
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setFillPercentage((prevPercent) =>
-        Math.max(prevPercent - 100 / (10 * 60), 0)
-      );
-      setTimeLeft((prevTime) => Math.max(prevTime - 1, 0));
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  useEffect(() => {}, []);
 
   // 분과 초를 계산
-  let minutes = Math.floor(timeLeft / 60);
-  let seconds = timeLeft % 60;
 
   return (
     <MagicPowerBarStyle>
@@ -84,9 +65,6 @@ const MagicPowerBar = () => {
         </BarContainer>
       </BarContainer2>
       <MagicPowderDescription>마법효과*2</MagicPowderDescription>
-      <TimerText>
-        {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-      </TimerText>
     </MagicPowerBarStyle>
   );
 };
