@@ -12,8 +12,9 @@ interface itemProps {
     magicPowder: number;
     heart: number;
 }
-interface itemtypeProps {
-    itemType: 'dew' | 'magicPowder' | 'heart';
+export interface itemtypeProps {
+    // itemType: 'dew' | 'magicPowder' | 'heart';
+    itemType: string;
 }
 export const createFairy = async ({ name, type }: fairyProps) => {
     const accessToken = localStorage.getItem('Access');
@@ -26,6 +27,7 @@ export const createFairy = async ({ name, type }: fairyProps) => {
             Authorization: `Bearer ${accessToken}`,
         },
     });
+    console.log(response.data);
     return response.data;
 };
 
@@ -84,7 +86,16 @@ export const acquireReward = async ({ dew, magicPowder, heart }: itemProps) => {
     return response.data;
 };
 
-export const useItem = async ({ itemType }: itemtypeProps) => {
-    const response = await axios.put(`${process.env.REACT_APP_SERVER}/inventory/item/${itemType}`);
+export const usingItem = async (itemType: string) => {
+    const accessToken = localStorage.getItem('Access');
+    const response = await axios.put(
+        `${process.env.REACT_APP_SERVER}/inventory/item/${itemType}`,
+        {},
+        {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
+    );
     return response.data;
 };

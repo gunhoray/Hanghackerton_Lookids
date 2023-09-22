@@ -76,6 +76,7 @@ const ShareLink = () => {
         <>
             <GameActionButton onClick={onShareButtonClick}>
                 <Share />
+                공유하기
             </GameActionButton>
 
             <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'공유하기'}>

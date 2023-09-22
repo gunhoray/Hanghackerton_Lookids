@@ -13,6 +13,7 @@ import { deleteUser } from '../../apis/AuthApi';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/config/configStore';
 import { useNavigate } from 'react-router-dom';
+import { useMutation } from 'react-query';
 const Menu = () => {
     const navigate = useNavigate();
     const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(
@@ -23,12 +24,18 @@ const Menu = () => {
     const { id } = useSelector((state: RootState) => {
         return state.user.data;
     });
-
+    // const mutation = useMutation((userId: number) => deleteUser(userId), {
+    //     onSuccess: (data) => {
+    //     },
+    // });
     const deleteUserHandler = () => {
-        const userId = id;
-        deleteUser({ userId });
+        // const userId = id;
+        deleteUser(id);
         navigate('/');
+
+        // mutation.mutate(id);
     };
+
     const handleLogout = () => {
         // 로그아웃 시 localStorage를 비우는 코드
         localStorage.clear();

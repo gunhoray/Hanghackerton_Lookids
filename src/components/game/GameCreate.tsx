@@ -3,11 +3,10 @@ import { GameHeader } from '../layout/Header';
 import styled from 'styled-components';
 import Button from '../common/Button';
 import Modal from '../common/Modal';
-import { ReactComponent as Character1 } from '../../assets/elemental.pink.1.svg';
-import { ReactComponent as Character2 } from '../../assets/elemental.green.1.svg';
 import useInput from '../../hooks/useInput';
-import MySVGComponent from '../gamecharcter/Folwery';
-import Green1 from '../gamecharcter/Leafy';
+import Flowery from '../gamecharcter/Folwery';
+import Leafy from '../gamecharcter/Leafy';
+import { createFairy } from '../../apis/fairy';
 const CharacterList = styled.ul`
     padding: 1.2rem 0.8rem;
     display: flex;
@@ -67,17 +66,20 @@ export const Form = styled.form`
 
 const GameCreate = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [characterIndex, setCharacterIndex] = useState<string>('');
+    const [characterType, setCharacterType] = useState<string>('');
     const [characterName, CharacterHandler, setCharacterName] = useInput('');
 
     const onClickCreateHandler = (type: string) => {
         setIsOpen(!isOpen);
-        setCharacterIndex(type);
+        setCharacterType(type);
     };
 
     const onSubmitHandler = () => {
-        console.log(characterName);
-        alert('submit');
+        const fairyCreate = {
+            name: characterName,
+            type: characterType,
+        };
+        createFairy(fairyCreate);
     };
     return (
         <>
@@ -85,16 +87,16 @@ const GameCreate = () => {
             <CharacterList>
                 <CharacterItem onClick={() => onClickCreateHandler('flowery')}>
                     <CharacterBox>
-                        <MySVGComponent />
+                        <Flowery />
                         {/* <Character1 /> */}
                     </CharacterBox>
-                    <p className="center">요정요정1</p>
+                    <p className="center">플라워리</p>
                 </CharacterItem>
                 <CharacterItem onClick={() => onClickCreateHandler('leafy')}>
                     <CharacterBox>
-                        <Green1 />
+                        <Leafy />
                     </CharacterBox>
-                    <p className="center">요정요정2</p>
+                    <p className="center">리피</p>
                 </CharacterItem>
                 <CharacterItem>
                     <CharacterBox>
@@ -105,7 +107,7 @@ const GameCreate = () => {
             {/* <Button onClick={onClickHandler}>캐릭터 생성</Button> */}
             <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'캐릭터 생성'}>
                 <Form action="" onSubmit={onSubmitHandler}>
-                    {characterIndex === 'flowery' ? <Character1 /> : <Character2 />}
+                    {characterType === 'flowery' ? <Flowery /> : <Leafy />}
                     <InputStyle
                         type="text"
                         value={characterName}

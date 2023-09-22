@@ -96,36 +96,21 @@ const WaterReward = () => {
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>이벤트 구경하기</MissionText>
-                                <DewButton
-                                    state={event}
-                                    buttonText={'바로가기'}
-                                    mission={'event'}
-                                    route={'/'}
-                                />
+                                <MissionButton $color={'#efefef'}>바로 가기</MissionButton>
                             </div>
                         </MissionItem>
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>신상마켓 구경하기</MissionText>
-                                <DewButton
-                                    state={newItem}
-                                    buttonText={'바로가기'}
-                                    mission={'newItem'}
-                                    route={'/'}
-                                />
+                                <MissionButton $color={'#efefef'}>바로 가기</MissionButton>
                             </div>
                         </MissionItem>
                         <MissionItem>
                             <div className="mission-item-inner">
                                 <MissionIcon>d</MissionIcon>
                                 <MissionText>리셀마켓 구경하기</MissionText>
-                                <DewButton
-                                    state={resell}
-                                    buttonText={'바로가기'}
-                                    mission={'resell'}
-                                    route={'/'}
-                                />
+                                <MissionButton $color={'#efefef'}>바로 가기</MissionButton>
                             </div>
                         </MissionItem>
                     </MissionList>
