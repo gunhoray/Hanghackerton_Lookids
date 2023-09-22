@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ToastState {
+interface magicMissionState {
     success: {
         share: string;
         purchase: string;
@@ -8,7 +8,7 @@ interface ToastState {
     };
 }
 
-const initialState: ToastState = {
+const initialState: magicMissionState = {
     success: {
         share: 'yet',
         purchase: 'yet',

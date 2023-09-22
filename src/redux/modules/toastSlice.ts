@@ -22,7 +22,6 @@ const toastSlice = createSlice({
     reducers: {
         ADD_PAGE: (state, action: PayloadAction<string>) => {
             state.page = action.payload;
-            console.log(state.page);
         },
         TIME_INTERVAL: (state) => {
             if (state.time > 0 && !state.getReward) {

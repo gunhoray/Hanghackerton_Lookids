@@ -41,7 +41,7 @@ const ShareButton = styled.button`
     cursor: pointer;
 `;
 
-const SHARE_LINK = 'https://codepen.io/ayoisaiah/pen/YbNazJ';
+const SHARE_LINK = 'http://lookids.bucket.s3-website.kr.object.ncloudstorage.com';
 
 const ShareLink = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
