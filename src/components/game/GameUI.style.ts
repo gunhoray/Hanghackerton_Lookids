@@ -28,6 +28,31 @@ export const GameActionButton = styled.button<styleColor>`
         border-radius: 50%;
     }
 `;
+
+export const TimerActionButton = styled.button`
+  width: 60px;
+  height: 60px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 12px;
+  color: "#000";
+  .can-get-reward {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-radius: 50%;
+  }
+`;
+
 export const RewardList = styled.ul`
     width: 100%;
     display: flex;

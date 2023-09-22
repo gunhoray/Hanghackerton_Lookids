@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from "react";
 import Modal from "../../common/Modal";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/config/configStore";
 
 const Timer = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [timeRemaining, setTimeRemaining] = useState(30 * 60); // Initialize with 1 hour in seconds
+  const { time, getReward } = useSelector((state: RootState) => {
+    return state.heartToast;
+  });
+  const [timeRemaining, setTimeRemaining] = useState(30 * 60);
 
-  useEffect(() => {
-    if (timeRemaining <= 0) {
-      setIsOpen(true);
-      return;
-    }
+  // useEffect(() => {
+  //   if (time <= 0) {
+  //     setIsOpen(true);
+  //     return;
+  //   }
 
-    // Decrease time remaining every second
-    const timerId = setInterval(() => {
-      setTimeRemaining((prevTime) => prevTime - 1);
-    }, 1000);
+  //   // Decrease time remaining every second
+  //   const timerId = setInterval(() => {
+  //     setTimeRemaining((prevTime) => prevTime - 1);
+  //   }, 1000);
 
-    // Clean up interval on unmount or when time is up
-    return () => clearInterval(timerId);
-  }, [timeRemaining]);
-
+  //   // Clean up interval on unmount or when time is up
+  //   return () => clearInterval(timerId);
+  // }, [time]);
+  console.log(time);
   return (
     <>
       <p
@@ -28,15 +33,8 @@ const Timer = () => {
         누적 보상까지
       </p>
       <span style={{ color: "orange", fontSize: "12px", marginTop: "-5px" }}>
-        {Math.floor(timeRemaining / 60)}:{timeRemaining % 60}
+        {Math.floor(time)}:{time % 60}
       </span>
-      <Modal
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        actionTitle={"시간 충족 완료"}
-      >
-        <p className="explanation">시간이 되었습니다! 보상을 받아가세요!</p>{" "}
-      </Modal>
     </>
   );
 };

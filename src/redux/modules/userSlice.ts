@@ -15,7 +15,6 @@ const initialState: UserState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-
   reducers: {
     fetchUserSuccess(state, action: PayloadAction<any>) {
       state.status = "succeeded";
