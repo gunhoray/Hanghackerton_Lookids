@@ -16,11 +16,16 @@ interface itemtypeProps {
     itemType: 'dew' | 'magicPowder' | 'heart';
 }
 export const createFairy = async ({ name, type }: fairyProps) => {
+    const accessToken = localStorage.getItem('Access');
     const config = {
         name,
         type,
     };
-    const response = await axios.post(`${process.env.REACT_APP_SERVER}/fairy`, config);
+    const response = await axios.post(`${process.env.REACT_APP_SERVER}/fairy`, config, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+    });
     return response.data;
 };
 
