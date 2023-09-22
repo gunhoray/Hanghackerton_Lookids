@@ -6,10 +6,11 @@ import { GameHeader } from "../../layout/Header";
 import RightSideMenu from "./RightSideMenu";
 import BottomSideMenu from "./BottomSideMenu";
 import MagicPowerBar from "./MagicPowerBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/config/configStore";
 import { useCharacter } from "../../../hooks/useCharacter";
 import ExpBar from "./ExpBar";
+import { UPDATE_CURRENT_TIME } from "../../../redux/modules/heartToastSlice";
 
 interface GamePlayPageBlockProps {
   isNightTime: boolean;
