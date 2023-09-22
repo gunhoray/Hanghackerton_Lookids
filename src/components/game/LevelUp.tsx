@@ -9,6 +9,7 @@ import { Form } from './GameCreate';
 import FloweryGrow from '../gamecharcter/FloweryGrow';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/config/configStore';
+import { useCharacter } from '../../hooks/useCharacter';
 
 const RewordPoint = styled.div`
     width: 100%;
@@ -79,10 +80,11 @@ interface levelProps {
 const LevelUp = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const levelRef = useRef();
+    const user = useSelector((state: RootState) => state.user);
     const { level } = useSelector((state: RootState) => {
         return state.user.data.fairy;
     });
-
+    const Character = useCharacter(user);
     useEffect(() => {
         if (levelRef.current === 1 && level > levelRef.current) {
             setIsOpen(!isOpen);
@@ -100,7 +102,9 @@ const LevelUp = () => {
                 <Form action="" onSubmit={onSubmitHandler}>
                     <p className="explanation">축하합니다~ 추카합니다~~~</p>
                     <LevelupEffect>
-                        <FloweryGrow height={'200px'} />
+                        {/* <div style={{ width: '70%' }}> */}
+                        <Character />
+                        {/* </div> */}
                         <span className="animation-3"></span>
                         <span className="animation-2"></span>
                         <span className="animation-1"></span>

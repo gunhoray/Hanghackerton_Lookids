@@ -26,9 +26,14 @@ const userSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+
+    fetchUserOut(state) {
+      state.data = null;
+    },
   },
 });
 
-export const { fetchUserSuccess, fetchUserFailure } = userSlice.actions;
+export const { fetchUserSuccess, fetchUserFailure, fetchUserOut } =
+  userSlice.actions;
 
 export default userSlice.reducer;

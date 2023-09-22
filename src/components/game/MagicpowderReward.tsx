@@ -55,7 +55,7 @@ const MagicpowderReward = () => {
         let isSuccess = false;
         for (let i = 0; i < state.length; i++) {
             if (state[i] === 'success') {
-                console.log(state[i]);
+                // console.log(state[i]);
                 isSuccess = true;
                 break;
             }
