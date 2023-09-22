@@ -7,6 +7,9 @@ import styled from 'styled-components';
 export function useCharacter(user: any) {
     const fairyType = user?.data?.fairy?.type;
     const fairyLevel = user?.data?.fairy?.level;
+    const fairyLevelup = user?.data?.fairy?.exp;
+
+    console.log(fairyLevelup);
 
     if (fairyType === 'leafy') {
         return fairyLevel === 2 ? LeafyGrow : Leafy;

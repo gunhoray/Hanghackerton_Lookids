@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Heart, MagicPowder, Water } from '../../../assets/icons/GameIcon';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { RootState } from '../../../redux/config/configStore';
 import { useMutation, useQueryClient } from 'react-query';
 import { itemtypeProps, usingItem } from '../../../apis/fairy';
 import useSpeech from '../../../hooks/useSpeech';
+import LevelUp from '../LevelUp';
 
 const BottomsideMenu = styled.div`
     display: flex;
@@ -55,6 +56,7 @@ const magicPowderSpeech = ['자라나라 쑥쑥'];
 const dewSpeech = ['감사합니다!', '마침 목이 말랐어요', '와아아~'];
 
 const BottomSideMenu = () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const { inventoryToItems } = useSelector((state: RootState) => {
         return state.user.data.inventory;
     });
@@ -86,40 +88,42 @@ const BottomSideMenu = () => {
     };
 
     return (
-        <BottomsideMenu>
-            <PlayPageBottomButton
-                onClick={() => onClickHandler('heart')}
-                disabled={inventoryToItems[2].quantity === 0}
-            >
-                <ButtonBox className="love">
-                    <Heart />
-                    사랑해주기 <br />
-                    <span>{inventoryToItems[2].quantity}개</span>
-                </ButtonBox>
-            </PlayPageBottomButton>
-            <PlayPageBottomButton
-                onClick={() => onClickHandler('magicPowder')}
-                disabled={magicPowderGauge > 90 || inventoryToItems[1].quantity === 0}
-            >
-                <ButtonBox className="magicpowder">
-                    <MagicPowder />
-                    마법가루 사용
-                    <br />
-                    <span>{inventoryToItems[1].quantity}개</span>
-                </ButtonBox>
-            </PlayPageBottomButton>
-            <PlayPageBottomButton
-                onClick={() => onClickHandler('dew')}
-                disabled={inventoryToItems[0].quantity === 0}
-            >
-                <ButtonBox className="water">
-                    <Water />
-                    이슬먹이기
-                    <br />
-                    <span>{inventoryToItems[0].quantity}개</span>
-                </ButtonBox>
-            </PlayPageBottomButton>
-        </BottomsideMenu>
+        <>
+            <BottomsideMenu>
+                <PlayPageBottomButton
+                    onClick={() => onClickHandler('heart')}
+                    disabled={inventoryToItems[2].quantity === 0}
+                >
+                    <ButtonBox className="love">
+                        <Heart />
+                        사랑해주기 <br />
+                        <span>{inventoryToItems[2].quantity}개</span>
+                    </ButtonBox>
+                </PlayPageBottomButton>
+                <PlayPageBottomButton
+                    onClick={() => onClickHandler('magicPowder')}
+                    disabled={magicPowderGauge > 90 || inventoryToItems[1].quantity === 0}
+                >
+                    <ButtonBox className="magicpowder">
+                        <MagicPowder />
+                        마법가루 사용
+                        <br />
+                        <span>{inventoryToItems[1].quantity}개</span>
+                    </ButtonBox>
+                </PlayPageBottomButton>
+                <PlayPageBottomButton
+                    onClick={() => onClickHandler('dew')}
+                    disabled={inventoryToItems[0].quantity === 0}
+                >
+                    <ButtonBox className="water">
+                        <Water />
+                        이슬먹이기
+                        <br />
+                        <span>{inventoryToItems[0].quantity}개</span>
+                    </ButtonBox>
+                </PlayPageBottomButton>
+            </BottomsideMenu>
+        </>
     );
 };
 
