@@ -1,6 +1,10 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
+interface buttonProps {
+    disabled?: any;
+}
+
 const ButtonStyle = styled.button`
     padding: 0.8rem;
     margin: 0 auto;
@@ -22,14 +26,36 @@ const ButtonStyle = styled.button`
     }
 `;
 
-type buttonProps = {
+const DisabledButton = styled(ButtonStyle)`
+    border: 2px solid #efefef;
+    color: #777;
+    &:hover,
+    &:active,
+    &:focus {
+        background: none;
+        color: #777;
+    }
+`;
+
+interface buttonProps2 {
     children: ReactNode;
     onClick?: () => void;
     type?: 'button' | 'submit' | 'reset';
-};
+    disabled?: any;
+}
 
-const Button = ({ children, ...restProps }: buttonProps) => {
-    return <ButtonStyle {...restProps}>{children}</ButtonStyle>;
+const Button = ({ children, disabled, ...restProps }: buttonProps2) => {
+    return (
+        <>
+            {disabled ? (
+                <DisabledButton {...restProps} disabled>
+                    {children}
+                </DisabledButton>
+            ) : (
+                <ButtonStyle {...restProps}>{children}</ButtonStyle>
+            )}
+        </>
+    );
 };
 
 export default Button;

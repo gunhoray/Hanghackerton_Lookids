@@ -10,8 +10,7 @@ const TimeCheck = () => {
     });
     useEffect(() => {
         let timer: any;
-        if (page === 'main') {
-            console.log(getReward);
+        if (page === 'trend') {
             timer = setInterval(() => {
                 dispatch(TIME_INTERVAL());
             }, 1000);
