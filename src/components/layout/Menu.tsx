@@ -10,15 +10,24 @@ import BottomSheet, {
 import { Book, Bullhorn, KebabMenuUI, LogoutIcon } from '../../assets/icons/SVG';
 import { IconBox } from './Header';
 import { deleteUser } from '../../apis/AuthApi';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/config/configStore';
+import { useNavigate } from 'react-router-dom';
 const Menu = () => {
     const { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler } = useBottomSheet(
         false,
         false
     );
 
+    const { id } = useSelector((state: RootState) => {
+        return state.user.data;
+    });
+    const nav = useNavigate();
+
     const deleteUserHandler = () => {
-        const userId = 1235468;
+        const userId = id;
         deleteUser({ userId });
+        nav('/');
     };
 
     return (
