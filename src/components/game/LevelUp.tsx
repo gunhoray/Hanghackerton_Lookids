@@ -102,9 +102,9 @@ const LevelUp = () => {
                 <Form action="" onSubmit={onSubmitHandler}>
                     <p className="explanation">축하합니다~ 추카합니다~~~</p>
                     <LevelupEffect>
-                        <div style={{ width: '70%' }}>
-                            <Character />
-                        </div>
+                        {/* <div style={{ width: '70%' }}> */}
+                        <Character />
+                        {/* </div> */}
                         <span className="animation-3"></span>
                         <span className="animation-2"></span>
                         <span className="animation-1"></span>
