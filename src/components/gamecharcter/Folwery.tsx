@@ -114,19 +114,9 @@ const Ani = styled.div`
     }
 `;
 
-const speech: string[] = [
-    '안녕하세요!',
-    '어떻게 지내세요?',
-    '좋은 하루 되세요!',
-    '무엇을 도와드릴까요?',
-    '감사합니다!',
-];
-
 const Folwery = () => {
-    const { speechEvent } = useSpeech(speech);
-
     return (
-        <Ani onClick={speechEvent}>
+        <Ani>
             <svg
                 version="1.1"
                 id="Layer_1"

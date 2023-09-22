@@ -8,11 +8,13 @@ interface ExpBarProps {
 }
 
 const ProgressBar = styled.div`
+    position: relative;
     background-color: rgba(216, 216, 216, 0.5);
     border-radius: 10px;
-    width: 40%;
+    width: 60%;
     height: 20px;
-    margin-top: -5%;
+    /* margin-top: -5%; */
+    margin: auto;
 `;
 
 const FilledBar = styled.div<{ $filledpercentage: string }>`
