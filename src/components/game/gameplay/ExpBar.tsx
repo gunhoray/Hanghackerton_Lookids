@@ -36,7 +36,7 @@ const PercentageText = styled.span`
 const ExpBar = ({ maxExp }: ExpBarProps) => {
     const [currentExp, setCurrentExp] = useState(0);
     const { exp } = useSelector((state: RootState) => {
-        return state.user.data.fairy;
+        return state.user.data.fairy || { exp: 0 };
     });
     useEffect(() => {
         // 서버에서 현재 경험치 가져오기

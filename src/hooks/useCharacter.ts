@@ -12,11 +12,11 @@ export function useCharacter(user: any) {
     console.log(fairyLevelup);
 
     if (fairyType === 'leafy') {
-        return fairyLevel === 2 ? LeafyGrow : Leafy;
+        return fairyLevel === 1 ? Leafy : LeafyGrow;
     }
 
     if (fairyType === 'flowery') {
-        return fairyLevel === 2 ? FloweryGrow : Folwery;
+        return fairyLevel === 1 ? Folwery : FloweryGrow;
     }
 
     // 기본값으로 green character level 1 반환

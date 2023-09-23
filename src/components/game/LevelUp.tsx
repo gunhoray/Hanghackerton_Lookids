@@ -82,7 +82,7 @@ const LevelUp = () => {
     const levelRef = useRef();
     const user = useSelector((state: RootState) => state.user);
     const { level } = useSelector((state: RootState) => {
-        return state.user.data.fairy;
+        return state.user.data.fairy || { level: 1 };
     });
     const Character = useCharacter(user);
     useEffect(() => {
