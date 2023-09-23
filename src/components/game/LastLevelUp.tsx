@@ -10,6 +10,8 @@ import FloweryGrow from '../gamecharcter/FloweryGrow';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/config/configStore';
 import { useCharacter } from '../../hooks/useCharacter';
+import { deleteFairy } from '../../apis/fairy';
+import { useNavigate } from 'react-router-dom';
 
 const RewordPoint = styled.div`
     width: 100%;
@@ -81,53 +83,57 @@ const LastLevelUp = () => {
         return state.user.data.fairy || { level: 1, name: '플립' };
     });
 
-    const Character = useCharacter(user);
+    const nav = useNavigate();
 
-    useEffect(() => {
-        if (levelRef.current === 2 && level > levelRef.current) {
-            setIsOpen(!isOpen);
-        }
-        levelRef.current = level;
-    }, [level]);
+    const Character = useCharacter(user);
 
     const onCLickOpenHanlder = () => {
         setIsOpen(!isOpen);
     };
 
     const onSubmitHandler = () => {
-        setIsOpen(!isOpen);
+        deleteFairy();
+        nav('/');
     };
 
     return (
         <>
-            <GameActionButton onClick={onCLickOpenHanlder} $color="#FF84A9">
-                {!isOpen && <span className="can-get-reward"></span>}
-                <LastReward />
-                보내주기
-            </GameActionButton>
-            <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'Last level up!'}>
-                <Form action="" onSubmit={onSubmitHandler}>
-                    <p className="explanation">축하합니다~ 추카합니다~~~</p>
-                    <LevelupEffect>
-                        <div className="last-level">
-                            <Character />
-                        </div>
-                        <span className="bye-message">
-                            지금까지 <br /> 키워주셔서 감사합니다
-                        </span>
-                    </LevelupEffect>
-                    {name}이 포인트를 남겨두고 떠나요
-                    <RewordPoint>
-                        <RewordBox>
-                            <div>
-                                <MoneyReward />
-                                <RewordText>5000 포인트</RewordText>
-                            </div>
-                        </RewordBox>
-                    </RewordPoint>
-                    <Button type="submit">보상 받기</Button>
-                </Form>
-            </Modal>
+            {level >= 3 && (
+                <>
+                    <GameActionButton
+                        onClick={onCLickOpenHanlder}
+                        $color="#FF84A9"
+                        className="center"
+                    >
+                        {!isOpen && <span className="can-get-reward"></span>}
+                        <LastReward />
+                        보내주기
+                    </GameActionButton>
+                    <Modal isOpen={isOpen} setIsOpen={setIsOpen} actionTitle={'Last level up!'}>
+                        <Form action="" onSubmit={onSubmitHandler}>
+                            <p className="explanation">'{name}'이/가 포인트를 남겨두고 떠나요</p>
+                            <LevelupEffect>
+                                <div className="last-level">
+                                    <Character />
+                                </div>
+                                <span className="bye-message">
+                                    지금까지 <br /> 키워주셔서 감사합니다
+                                </span>
+                            </LevelupEffect>
+
+                            <RewordPoint>
+                                <RewordBox>
+                                    <div>
+                                        <MoneyReward />
+                                        <RewordText>5000 포인트</RewordText>
+                                    </div>
+                                </RewordBox>
+                            </RewordPoint>
+                            <Button type="submit">보상 받기</Button>
+                        </Form>
+                    </Modal>
+                </>
+            )}
         </>
     );
 };

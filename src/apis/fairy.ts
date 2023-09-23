@@ -77,20 +77,20 @@ export const clearMission = async (missionType: string) => {
 //   | 'resell';
 
 export const acquireReward = async ({ dew, magicPowder, heart }: itemProps) => {
-    const accessToken = localStorage.getItem("Access");
+    const accessToken = localStorage.getItem('Access');
     const config = {
         dew,
         magicPowder,
         heart,
     };
     const response = await axios.patch(
-      `${process.env.REACT_APP_SERVER}/inventory/rewards`,
-      config,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+        `${process.env.REACT_APP_SERVER}/inventory/rewards`,
+        config,
+        {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
     );
     return response.data;
 };
@@ -106,5 +106,15 @@ export const usingItem = async (itemType: string) => {
             },
         }
     );
+    return response.data;
+};
+
+export const deleteFairy = async () => {
+    const accessToken = localStorage.getItem('Access');
+    const response = await axios.delete(`${process.env.REACT_APP_SERVER}/fairy`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+    });
     return response.data;
 };
