@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Share } from '../../assets/icons/SVG';
 import { GameActionButton } from '../game/GameUI.style';
 import Modal from './Modal';
-import { useDispatch } from 'react-redux';
-import { SUCCESS_MISSION } from '../../redux/modules/magicMissionSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { FOCUS_OFF_SHARE, SUCCESS_MISSION } from '../../redux/modules/magicMissionSlice';
+import { RootState } from '../../redux/config/configStore';
 
 const ShareLinkStyle = styled.div`
     display: flex;
@@ -45,8 +46,19 @@ const SHARE_LINK = 'http://101.101.218.26:3000';
 
 const ShareLink = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    // const [focus, setFocus] = useState<boolean>(true);
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const dispatch = useDispatch();
+    const { share } = useSelector((state: RootState) => {
+        return state.magicMission;
+    });
+    // console.log(share);
+    useEffect(() => {
+        if (share) {
+            setTimeout(() => dispatch(FOCUS_OFF_SHARE()), 2000);
+            // setFocus(share);
+        }
+    }, [share]);
 
     const onShareButtonClick = () => {
         if (navigator?.share) {
@@ -68,13 +80,18 @@ const ShareLink = () => {
             textareaRef.current.select();
             try {
                 document.execCommand('copy');
-            } catch (err) {}
+                dispatch(SUCCESS_MISSION('share'));
+                setIsOpen(false);
+                alert('링크가 복사되었습니다');
+            } catch (err) {
+                alert('링크 복사 실패했습니다.');
+            }
         }
     };
 
     return (
         <>
-            <GameActionButton onClick={onShareButtonClick}>
+            <GameActionButton onClick={onShareButtonClick} id={share ? 'shareButton' : ''}>
                 <Share />
                 공유하기
             </GameActionButton>
