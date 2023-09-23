@@ -81,7 +81,11 @@ const ShareLink = () => {
             try {
                 document.execCommand('copy');
                 dispatch(SUCCESS_MISSION('share'));
-            } catch (err) {}
+                setIsOpen(false);
+                alert('링크가 복사되었습니다');
+            } catch (err) {
+                alert('링크 복사 실패했습니다.');
+            }
         }
     };
 
