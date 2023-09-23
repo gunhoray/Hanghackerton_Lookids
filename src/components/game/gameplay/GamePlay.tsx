@@ -27,23 +27,23 @@ const LeftSide = styled.div`
 `;
 
 const StyledDiv = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const CharacterBox = styled.div`
-    width: 70%;
-    position: absolute;
+    width: 100%;
+    /* position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 `;
 
 const GamePlayPageBlock = ({ isNightTime, children }: GamePlayPageBlockProps) => (
@@ -57,6 +57,15 @@ const GamePlayPageBlock = ({ isNightTime, children }: GamePlayPageBlockProps) =>
         {children}
     </StyledDiv>
 );
+
+const GameUICenter = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100svh - 60px);
+    position: relative;
+`;
 
 const speech: string[] = [
     '안녕하세요!',
@@ -78,15 +87,17 @@ const GamePlay = () => {
         <GamePlayPageBlock isNightTime={isNightTime}>
             <GameHeader headerName={headerName} />
             <RightSideMenu />
-            <CharacterBox>
-                <SpeechBubble />
-                <div onClick={speechEvent}>
-                    <Character />
-                </div>
-                <ExpBar maxExp={100} />
-                <LastLevelUp />
-            </CharacterBox>
-            <BottomSideMenu />
+            <GameUICenter>
+                <CharacterBox>
+                    <SpeechBubble />
+                    <div onClick={speechEvent}>
+                        <Character />
+                    </div>
+                    <ExpBar maxExp={100} />
+                    <LastLevelUp />
+                </CharacterBox>
+                <BottomSideMenu />
+            </GameUICenter>
             <LeftSide>
                 <MagicPowerBar />
             </LeftSide>

@@ -30,6 +30,9 @@ export const GameActionButton = styled.button<styleColor>`
         background-color: red;
         border-radius: 50%;
     }
+    &#shareButton {
+        outline: 3px solid #24ffb0;
+    }
 `;
 
 export const TimerActionButton = styled.button`
