@@ -27,15 +27,15 @@ const LeftSide = styled.div`
 `;
 
 const StyledDiv = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const CharacterBox = styled.div`
