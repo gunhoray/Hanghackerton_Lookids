@@ -4,8 +4,8 @@ import { ChatIcon, RecellIcon, ShoppingIcon, TrendIcon, UserIcon } from '../../a
 
 const NavTabBarStyle = styled.nav`
     position: fixed;
-    bottom: 0;
-    max-width: 360px;
+    bottom: -1px;
+    /* max-width: 360px; */
     width: 100%;
     /* height: 3rem; */
     /* padding: 0.8rem 0; */
@@ -13,8 +13,11 @@ const NavTabBarStyle = styled.nav`
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
-    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
     z-index: 1000;
+    @media screen and (min-width: 460px) {
+        max-width: 360px;
+    }
 `;
 
 const TabIconBox = styled.div`

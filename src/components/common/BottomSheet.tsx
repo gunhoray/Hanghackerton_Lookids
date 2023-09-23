@@ -8,7 +8,7 @@ const OverlayBG = styled.div`
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 360px;
+    /* max-width: 360px; */
     width: 100%;
     height: 100vh;
     align-items: center;
@@ -45,6 +45,9 @@ const OverlayBG = styled.div`
             display: none;
         }
     }
+    @media screen and (min-width: 460px) {
+        max-width: 360px;
+    }
 `;
 
 const BottomSheetBox = styled.div`
@@ -53,7 +56,7 @@ const BottomSheetBox = styled.div`
     left: 50%;
     /* transform: translateX(-50%); */
     background-color: #fff;
-    max-width: 360px;
+    /* max-width: 360px; */
     width: 100%;
     min-height: 30vh;
     padding: 10px 0px 30px;
@@ -88,6 +91,9 @@ const BottomSheetBox = styled.div`
         100% {
             transform: translateY(100%) translateX(-50%);
         }
+    }
+    @media screen and (min-width: 460px) {
+        max-width: 360px;
     }
 `;
 

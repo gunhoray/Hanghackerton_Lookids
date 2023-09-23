@@ -77,7 +77,6 @@ const BottomSideMenu = () => {
             }
         );
     });
-    console.log(inventoryToItems);
     const { magicPowderGauge } = useSelector((state: RootState) => {
         return state.user.data.fairy || { magicPowderGauge: 90 };
     });
