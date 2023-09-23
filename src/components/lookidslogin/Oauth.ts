@@ -34,7 +34,7 @@ const Oauth: React.FC = () => {
           `${process.env.REACT_APP_SERVER}/users/sign-in/kakao`,
           {
             code: code,
-            redirectUri: "http://localhost:3000/oauth",
+            redirectUri: `${process.env.REACT_APP_KAKAO_REDIRECT_URI}`,
           },
           {
             withCredentials: true,
