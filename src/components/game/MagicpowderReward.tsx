@@ -30,7 +30,13 @@ const MagicpowderReward = () => {
 
     const { clearedShareMission, clearedAttendanceMission, clearedPurchaseMission } = useSelector(
         (state: RootState) => {
-            return state.user.data.fairy;
+            return (
+                state.user?.data?.fairy || {
+                    clearedShareMission: false,
+                    clearedAttendanceMission: false,
+                    clearedPurchaseMission: false,
+                }
+            );
         }
     );
 

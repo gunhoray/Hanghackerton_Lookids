@@ -100,7 +100,17 @@ const AttendanceReward = () => {
         clearedFRIMission,
         clearedSATMission,
     } = useSelector((state: RootState) => {
-        return state.user.data.fairy;
+        return (
+            state.user?.data?.fairy || {
+                clearedSUNMission: false,
+                clearedMONMission: false,
+                clearedTUEMission: false,
+                clearedWEDMission: false,
+                clearedTHUMission: false,
+                clearedFRIMission: false,
+                clearedSATMission: false,
+            }
+        );
     });
 
     // 현재 날짜를 가져옵니다.

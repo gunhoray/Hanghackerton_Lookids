@@ -32,7 +32,14 @@ const WaterReward = () => {
     });
     const { clearedTrendMission, clearedEventMission, clearedNewMission, clearedResellMission } =
         useSelector((state: RootState) => {
-            return state.user.data.fairy;
+            return (
+                state.user.data.fairy || {
+                    clearedTrendMission: false,
+                    clearedEventMission: false,
+                    clearedNewMission: false,
+                    clearedResellMission: false,
+                }
+            );
         });
 
     const { trend, event, newItem, resell } = useSelector((state: RootState) => {

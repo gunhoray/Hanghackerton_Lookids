@@ -58,10 +58,28 @@ const dewSpeech = ['감사합니다!', '마침 목이 말랐어요', '와아아~
 const BottomSideMenu = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const { inventoryToItems } = useSelector((state: RootState) => {
-        return state.user.data.inventory;
+        return (
+            state.user.data.inventory || {
+                inventoryToItems: [
+                    {
+                        name: 'dew',
+                        quantity: 5,
+                    },
+                    {
+                        name: 'magicPowder',
+                        quantity: 3,
+                    },
+                    {
+                        name: 'heart',
+                        quantity: 0,
+                    },
+                ],
+            }
+        );
     });
+    console.log(inventoryToItems);
     const { magicPowderGauge } = useSelector((state: RootState) => {
-        return state.user.data.fairy;
+        return state.user.data.fairy || { magicPowderGauge: 90 };
     });
 
     const { speechEvent: heartEvent } = useSpeech(heartSpeech);
@@ -92,34 +110,37 @@ const BottomSideMenu = () => {
             <BottomsideMenu>
                 <PlayPageBottomButton
                     onClick={() => onClickHandler('heart')}
-                    disabled={inventoryToItems[2].quantity === 0}
+                    disabled={inventoryToItems && inventoryToItems[2].quantity === 0}
                 >
                     <ButtonBox className="love">
                         <Heart />
                         사랑해주기 <br />
-                        <span>{inventoryToItems[2].quantity}개</span>
+                        <span>{inventoryToItems && inventoryToItems[2].quantity}개</span>
                     </ButtonBox>
                 </PlayPageBottomButton>
                 <PlayPageBottomButton
                     onClick={() => onClickHandler('magicPowder')}
-                    disabled={magicPowderGauge > 90 || inventoryToItems[1].quantity === 0}
+                    disabled={
+                        magicPowderGauge > 90 ||
+                        (inventoryToItems && inventoryToItems[1].quantity === 0)
+                    }
                 >
                     <ButtonBox className="magicpowder">
                         <MagicPowder />
                         마법가루 사용
                         <br />
-                        <span>{inventoryToItems[1].quantity}개</span>
+                        <span>{inventoryToItems && inventoryToItems[1].quantity}개</span>
                     </ButtonBox>
                 </PlayPageBottomButton>
                 <PlayPageBottomButton
                     onClick={() => onClickHandler('dew')}
-                    disabled={inventoryToItems[0].quantity === 0}
+                    disabled={inventoryToItems && inventoryToItems[0].quantity === 0}
                 >
                     <ButtonBox className="water">
                         <Water />
                         이슬먹이기
                         <br />
-                        <span>{inventoryToItems[0].quantity}개</span>
+                        <span>{inventoryToItems && inventoryToItems[0].quantity}개</span>
                     </ButtonBox>
                 </PlayPageBottomButton>
             </BottomsideMenu>
