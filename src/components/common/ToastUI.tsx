@@ -143,7 +143,6 @@ const ToastUIContainer = () => {
     useEffect(() => {
         if (message) {
             addNotification(message);
-            // console.log(message);
         }
     }, [message]);
 

@@ -19,7 +19,6 @@ const speechBubbleSlice = createSlice({
         },
         CLEAR_SPEECH: (state) => {
             state.speech = null;
-            // console.log('지우기');
         },
     },
 });

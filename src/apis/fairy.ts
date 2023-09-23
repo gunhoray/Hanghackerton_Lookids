@@ -27,7 +27,7 @@ export const createFairy = async ({ name, type }: fairyProps) => {
             Authorization: `Bearer ${accessToken}`,
         },
     });
-    console.log(response.data);
+
     return response.data;
 };
 
@@ -38,14 +38,6 @@ export const getFairy = async () => {
 
 export const clearMission = async (missionType: string) => {
     const accessToken = localStorage.getItem('Access');
-    // const response = await axios.patch(
-    //     `${process.env.REACT_APP_SERVER}/fairy/clear-mission?missionType=${missionType}`,
-    //     {
-    //         headers: {
-    //             Authorization: `Bearer ${accessToken}`,
-    //         },
-    //     }
-    // );
     const response = await axios.patch(
         `${process.env.REACT_APP_SERVER}/fairy/clear-mission?missionType=${missionType}`,
         {},
@@ -55,26 +47,8 @@ export const clearMission = async (missionType: string) => {
             },
         }
     );
-    console.log(response.data);
     return response.data;
 };
-
-//MEMO
-// export type MissionType =
-//   | 'MON'
-//   | 'TUE'
-//   | 'WED'
-//   | 'THU'
-//   | 'FRI'
-//   | 'SAT'
-//   | 'SUN'
-//   | 'share'
-//   | 'attendance'
-//   | 'purchase'
-//   | 'trend'
-//   | 'event'
-//   | 'new'
-//   | 'resell';
 
 export const acquireReward = async ({ dew, magicPowder, heart }: itemProps) => {
     const accessToken = localStorage.getItem('Access');

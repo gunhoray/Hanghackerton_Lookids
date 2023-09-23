@@ -54,9 +54,7 @@ const ShareLink = () => {
                     title: 'WebShare API Demo',
                     url: SHARE_LINK,
                 })
-                .then(() => {
-                    console.log('Thanks for sharing!');
-                })
+                .then(() => {})
                 .catch(console.error);
         } else {
             setIsOpen(true);
