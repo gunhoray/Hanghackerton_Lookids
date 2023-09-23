@@ -94,25 +94,3 @@ export const CommonHeader = () => {
         </CommonHeaderStyle>
     );
 };
-
-// const Header = () => {
-//     const [pathname, setPathname] = useState<string>('/');
-//     useEffect(() => {
-//         const currentPathname = window.location.pathname;
-//         if (currentPathname) {
-//             setPathname(currentPathname);
-//         }
-//     }, []);
-
-//     console.log(pathname);
-//     switch (pathname) {
-//         case '/':
-//             return <MainHeader />;
-//         case '/game':
-//             return <GameHeader />;
-//         default:
-//             return <MainHeader />;
-//     }
-// };
-
-// export default Header;

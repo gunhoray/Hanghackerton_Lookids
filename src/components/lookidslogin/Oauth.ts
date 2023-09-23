@@ -21,12 +21,10 @@ interface CustomAxiosResponse extends AxiosResponse {
 
 const Oauth: React.FC = () => {
     const code = new URL(window.location.href).searchParams.get('code');
-    // console.log(code);
     const navigate = useNavigate();
     const startTime = Date.now();
     const expirationTime = startTime + 1 * 60 * 1000;
 
-    // console.log(expirationTime);
     useEffect(() => {
         (async () => {
             try {
@@ -44,14 +42,12 @@ const Oauth: React.FC = () => {
                 const refresh = res.data.refreshToken;
                 localStorage.setItem('Access', access);
                 localStorage.setItem('Refresh', refresh);
-                // console.log(res);
                 if (access && refresh !== '') {
                     localStorage.setItem('RewardStartTime', startTime.toString());
                     localStorage.setItem('RewardExpiredTime', expirationTime.toString());
                 }
                 navigate('/');
             } catch (e) {
-                // console.error(e);
                 navigate('/');
             }
         })();

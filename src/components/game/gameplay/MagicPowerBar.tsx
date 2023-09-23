@@ -54,7 +54,7 @@ const FilledBar = styled.div`
 const MagicPowerBar = () => {
     const [fillPercentage, setFillPercentage] = useState(100);
     const { magicPowderGauge } = useSelector((state: RootState) => {
-        return state.user?.data?.fairy || { magicPowderGauge: 90 };
+        return state.user?.data?.fairy || { magicPowderGauge: 60 };
     });
     useEffect(() => {}, []);
 
@@ -69,7 +69,9 @@ const MagicPowerBar = () => {
                 </BarContainer>
             </BarContainer2>
             <MagicPowderDescription>{magicPowderGauge}%</MagicPowderDescription>
-            <MagicPowderDescription>마법효과 X 2</MagicPowderDescription>
+            {magicPowderGauge >= 80 && (
+                <MagicPowderDescription>마법효과 X 2</MagicPowderDescription>
+            )}
         </MagicPowerBarStyle>
     );
 };
