@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Heart, MagicPowder, Water } from '../../../assets/icons/GameIcon';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/config/configStore';
-import { useMutation, useQueryClient } from 'react-query';
-import { itemtypeProps, usingItem } from '../../../apis/fairy';
-import useSpeech from '../../../hooks/useSpeech';
-import LevelUp from '../LevelUp';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Heart, MagicPowder, Water } from "../../../assets/icons/GameIcon";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/config/configStore";
+import { useMutation, useQueryClient } from "react-query";
+import { itemtypeProps, usingItem } from "../../../apis/fairy";
+import useSpeech from "../../../hooks/useSpeech";
+import LevelUp from "../LevelUp";
 import Shower from "./Shower";
 
 const BottomsideMenu = styled.div`
@@ -51,8 +51,6 @@ const ButtonBox = styled.div`
     background-color: lightblue;
   }
 `;
-
-
 
 const heartSpeech = ["저도 많이 사랑해요", "우와앙", "좋아요!"];
 const magicPowderSpeech = ["자라나라 쑥쑥"];

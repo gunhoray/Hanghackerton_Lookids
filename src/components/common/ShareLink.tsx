@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Share } from '../../assets/icons/SVG';
 import { GameActionButton } from '../game/GameUI.style';
@@ -41,22 +41,21 @@ const ShareButton = styled.button`
     cursor: pointer;
 `;
 
-const SHARE_LINK = 'http://lookids.bucket.s3-website.kr.object.ncloudstorage.com';
+const SHARE_LINK = 'http://101.101.218.26:3000';
 
 const ShareLink = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const dispatch = useDispatch();
 
     const onShareButtonClick = () => {
-        if (navigator.share) {
+        if (navigator?.share) {
             navigator
                 .share({
                     title: 'WebShare API Demo',
                     url: SHARE_LINK,
                 })
-                .then(() => {
-                    console.log('Thanks for sharing!');
-                })
+                .then(() => {})
                 .catch(console.error);
         } else {
             setIsOpen(true);
@@ -64,11 +63,12 @@ const ShareLink = () => {
     };
 
     const onCopyLinkClick = async () => {
-        try {
-            await navigator.clipboard.writeText(SHARE_LINK);
-            dispatch(SUCCESS_MISSION('share'));
-        } catch (err) {
-            console.error('Failed to copy link: ', err);
+        if (textareaRef.current) {
+            textareaRef.current.value = SHARE_LINK;
+            textareaRef.current.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {}
         }
     };
 
@@ -87,6 +87,11 @@ const ShareLink = () => {
                     </ShareLinkStyle>
                 </ShareBox>
             </Modal>
+            <textarea
+                ref={textareaRef}
+                style={{ position: 'absolute', left: '-9999px' }}
+                readOnly
+            />
         </>
     );
 };

@@ -56,7 +56,7 @@ const ModalButton = styled.button`
 const BuyBar = styled.div`
     position: fixed;
     bottom: 0;
-    max-width: 360px;
+    /* max-width: 360px; */
     width: 100%;
     height: 6vh;
     background-color: #000;
@@ -65,6 +65,9 @@ const BuyBar = styled.div`
     align-items: center;
     color: #fff;
     padding: 0.8rem;
+    @media screen and (min-width: 460px) {
+        max-width: 360px;
+    }
 `;
 
 const BuyButton = styled.button`
