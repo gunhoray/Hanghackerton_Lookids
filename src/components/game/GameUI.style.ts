@@ -61,8 +61,8 @@ export const RewardList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    & > :nth-child(1),
-    & > :nth-child(2) {
+    & > :nth-child(2),
+    & > :nth-child(3) {
         width: calc(25% - 6px);
     }
 `;

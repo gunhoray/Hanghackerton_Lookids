@@ -26,6 +26,16 @@ import { fetchUserSuccess } from '../../redux/modules/userSlice';
 
 const rewardData = [
     {
+        day: '일요일',
+        items: [
+            { name: 'Water', count: 1 },
+            { name: 'MagicPowder', count: 1 },
+            { name: 'Heart', count: 1 },
+        ],
+        past: true,
+        received: false,
+    },
+    {
         day: '월요일',
         items: [{ name: 'All', count: 1 }],
         past: true,
@@ -77,16 +87,6 @@ const rewardData = [
         past: true,
         received: false,
     },
-    {
-        day: '일요일',
-        items: [
-            { name: 'Water', count: 1 },
-            { name: 'MagicPowder', count: 1 },
-            { name: 'Heart', count: 1 },
-        ],
-        past: true,
-        received: false,
-    },
 ];
 
 const AttendanceReward = () => {
@@ -125,7 +125,7 @@ const AttendanceReward = () => {
         clearedSUNMission,
     ];
 
-    const dayOfWeek = today.getDay() - 1;
+    const dayOfWeek = today.getDay();
     const missionDayOfWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
     for (let i = dayOfWeek; i <= rewardData.length; i++) {
         if (rewardData[i]) {
@@ -153,6 +153,7 @@ const AttendanceReward = () => {
         mutation.mutate(clearDayOfWeek);
         setIsOpen(!isOpen);
     };
+
     return (
         <>
             <GameActionButton onClick={onClickCreateHandler} $color="#46B91E">
@@ -199,7 +200,7 @@ const AttendanceReward = () => {
                                     ) : (
                                         day.items.map((item, itemIndex) => (
                                             <React.Fragment key={itemIndex}>
-                                                {item.name === 'ALL' && (
+                                                {item.name === 'All' && (
                                                     <div>
                                                         <ALLReward />
                                                         <RewordText>1+1+1개</RewordText>
