@@ -10,10 +10,12 @@ const RightsideMenu = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 75%;
-    margin-top: 5%;
-    gap: 10px;
+    position: absolute;
+    gap: 8px;
+    top: 72px;
+    right: 16px;
 `;
+
 const RightSideMenu = () => {
     return (
         <RightsideMenu>
