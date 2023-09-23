@@ -107,25 +107,27 @@ const TodayLookList = () => {
             <TodayFilterNav />
             <LookListBox>
                 <TodayLookListStyle>
-                    {mockData.map((item) => {
+                    {mockData.map((item, index) => {
                         return (
                             <LookImageCard
                                 image={item.image}
                                 tags={item.tags}
                                 userName={item.user}
                                 $width={`100%`}
+                                key={`img-list1-${index}`}
                             />
                         );
                     })}
                 </TodayLookListStyle>
                 <TodayLookListStyle>
-                    {mockData2.map((item) => {
+                    {mockData2.map((item, index) => {
                         return (
                             <LookImageCard
                                 image={item.image}
                                 tags={item.tags}
                                 userName={item.user}
                                 $width={`100%`}
+                                key={`img-list2-${index}`}
                             />
                         );
                     })}

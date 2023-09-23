@@ -6,6 +6,8 @@ import { XmarkIcon } from '../../assets/icons/SVG';
 const OverlayBG = styled.div`
     position: fixed;
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     max-width: 360px;
     width: 100%;
     height: 100vh;
@@ -48,6 +50,8 @@ const OverlayBG = styled.div`
 const BottomSheetBox = styled.div`
     position: fixed;
     bottom: 0;
+    left: 50%;
+    /* transform: translateX(-50%); */
     background-color: #fff;
     max-width: 360px;
     width: 100%;
@@ -60,6 +64,7 @@ const BottomSheetBox = styled.div`
     align-items: center;
     gap: 16px;
     text-align: center;
+    font-size: 1.1rem;
     line-height: 1.2;
     z-index: 1000;
     &.up {
@@ -70,18 +75,18 @@ const BottomSheetBox = styled.div`
     }
     @keyframes up {
         0% {
-            transform: translateY(100%);
+            transform: translateY(100%) translateX(-50%);
         }
         100% {
-            transform: translateY(0);
+            transform: translateY(0) translateX(-50%);
         }
     }
     @keyframes down {
         0% {
-            transform: translateY(0);
+            transform: translateY(0) translateX(-50%);
         }
         100% {
-            transform: translateY(100%);
+            transform: translateY(100%) translateX(-50%);
         }
     }
 `;
@@ -143,6 +148,10 @@ export const MissionIcon = styled.span`
     display: flex;
     justify-content: center;
     align-items: center;
+    path {
+        fill: var(--color);
+        filter: brightness(0.7);
+    }
 `;
 
 type styleProps = {
@@ -153,10 +162,16 @@ export const MissionText = styled.p<styleProps>`
     width: ${(props) => (props.$width ? props.$width : 'calc(100% - 140px)')};
     text-align: start;
 `;
-export const MissionButton = styled.button`
+
+type missionProps = {
+    $color?: string;
+};
+
+export const MissionButton = styled.button<missionProps>`
+    min-width: 70px;
     font-size: 0.9rem;
     /* background-color: #bbf3ff; */
-    background-color: var(--color);
+    background-color: ${(props) => (props.$color ? props.$color : `var(--color)`)};
     color: #696969;
     padding: 0.4rem 0.6rem;
     border-radius: 6px;
@@ -165,7 +180,9 @@ export const MissionButton = styled.button`
 
 type bottomSheetProps = {
     isShow: boolean;
+    isOpen: boolean;
     setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     children: ReactNode;
     actionTitle: string;
     onClickEvent?: () => void;
@@ -176,12 +193,14 @@ export const useBottomSheet = (initialIsOpen = false, initialIsShow = false) => 
     const [isShow, setIsShow] = useState(initialIsShow);
     const onClickShowHandler = () => {
         setIsOpen(true);
-        setIsShow(!isShow);
+        setIsShow(true);
     };
-    return { isOpen, isShow, setIsShow, onClickShowHandler };
+    return { isOpen, setIsOpen, isShow, setIsShow, onClickShowHandler };
 };
 
 const BottomSheet = ({
+    isOpen,
+    setIsOpen,
     isShow,
     setIsShow,
     actionTitle,
@@ -189,7 +208,10 @@ const BottomSheet = ({
     onClickEvent,
 }: bottomSheetProps) => {
     const onClickCloseHandler = () => {
-        setIsShow(!isShow);
+        setIsShow(false);
+        setTimeout(() => {
+            setIsOpen(false); // 0.8초 후에 모달 열기/닫기 상태를 토글합니다.
+        }, 800); // 0.8초 (800 밀리초) 지연
     };
 
     return (

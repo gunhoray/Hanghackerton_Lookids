@@ -12,18 +12,18 @@ const LayoutStyle = styled.div`
     main {
         /* padding: 0 0.8rem; */
     }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 `;
 
 type LayoutProps = {
     children: ReactNode;
 };
 const Layout = ({ children }: LayoutProps) => {
-    return (
-        <LayoutStyle>
-            {children}
-            <div id="modal-root"></div>
-        </LayoutStyle>
-    );
+    return <LayoutStyle>{children}</LayoutStyle>;
 };
 
 export default Layout;
