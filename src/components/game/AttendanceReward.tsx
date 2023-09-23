@@ -156,7 +156,7 @@ const AttendanceReward = () => {
     return (
         <>
             <GameActionButton onClick={onClickCreateHandler} $color="#46B91E">
-                {!rewardData[dayOfWeek].received && <span className="can-get-reward"></span>}
+                {!rewardData[dayOfWeek]?.received && <span className="can-get-reward"></span>}
                 <Calender />
                 출석부
             </GameActionButton>
