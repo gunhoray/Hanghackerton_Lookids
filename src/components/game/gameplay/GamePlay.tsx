@@ -60,9 +60,9 @@ const GamePlayPageBlock = ({ isNightTime, children }: GamePlayPageBlockProps) =>
 
 const speech: string[] = [
     '안녕하세요!',
-    '어떻게 지내세요?',
+    '아~ 이슬 먹고 싶다',
     '좋은 하루 되세요!',
-    '무엇을 도와드릴까요?',
+    '레벨3 찍어보고 싶다',
     '감사합니다!',
 ];
 

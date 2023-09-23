@@ -10,6 +10,9 @@ import LeafyGrow from '../components/gamecharcter/LeafyGrow';
 import ShareLink from '../components/common/ShareLink';
 import SpeechBubble from '../components/game/gameplay/SpeechBubble';
 import LastLevelUp from '../components/game/LastLevelUp';
+import MagicPowerBar from '../components/game/gameplay/MagicPowerBar';
+import ExpBar from '../components/game/gameplay/ExpBar';
+import GamePlay from '../components/game/gameplay/GamePlay';
 
 const TestPage = () => {
     return (
@@ -30,11 +33,13 @@ const TestPage = () => {
                 <Menu />
                 <ShareLink />
             </div>
+            <GamePlay />
+            {/* <MagicPowerBar />
             <SpeechBubble />
             <Folwery />
             <Green1 />
             <FloweryGrow />
-            <LeafyGrow />
+            <LeafyGrow /> */}
         </>
     );
 };

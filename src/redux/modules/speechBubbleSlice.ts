@@ -5,7 +5,7 @@ interface speechBubbleState {
 }
 
 const initialState: speechBubbleState = {
-    speech: '아~ 이슬 먹고 싶다',
+    speech: '성장하면 좋은 게 있을지도~',
 };
 
 export type SuccessKeys = 'share' | 'purchase' | 'attendance';

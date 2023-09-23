@@ -41,14 +41,14 @@ const ShareButton = styled.button`
     cursor: pointer;
 `;
 
-const SHARE_LINK = 'http://lookids.bucket.s3-website.kr.object.ncloudstorage.com';
+const SHARE_LINK = 'http://101.101.218.26:3000';
 
 const ShareLink = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const dispatch = useDispatch();
 
     const onShareButtonClick = () => {
-        if (navigator.share) {
+        if (navigator?.share) {
             navigator
                 .share({
                     title: 'WebShare API Demo',
@@ -65,10 +65,11 @@ const ShareLink = () => {
 
     const onCopyLinkClick = async () => {
         try {
-            await navigator.clipboard.writeText(SHARE_LINK);
+            await navigator?.clipboard?.writeText(SHARE_LINK);
             dispatch(SUCCESS_MISSION('share'));
+            alert('클립보드에 복사되었습니다.');
         } catch (err) {
-            console.error('Failed to copy link: ', err);
+            alert('오류가 발생하여 링크 복사에 실패했습니다.');
         }
     };
 
