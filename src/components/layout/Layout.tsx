@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const LayoutStyle = styled.div`
-    max-width: 360px;
+    width: 100%;
     height: 100vh;
     margin: auto;
 
@@ -17,6 +17,9 @@ const LayoutStyle = styled.div`
     }
     -ms-overflow-style: none;
     scrollbar-width: none;
+    @media screen and (min-width: 460px) {
+        max-width: 360px;
+    }
 `;
 
 type LayoutProps = {

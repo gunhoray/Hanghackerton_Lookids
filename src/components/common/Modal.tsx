@@ -7,7 +7,7 @@ const OverlayBG = styled.div`
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 360px;
+    /* max-width: 360px; */
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
@@ -15,6 +15,9 @@ const OverlayBG = styled.div`
     align-items: center;
     justify-content: center;
     z-index: 999;
+    @media screen and (min-width: 460px) {
+        max-width: 360px;
+    }
 `;
 
 const ModalBox = styled.div`
