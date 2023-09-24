@@ -91,7 +91,8 @@ const LastLevelUp = () => {
         setIsOpen(!isOpen);
     };
 
-    const onSubmitHandler = () => {
+    const onSubmitHandler = (e: React.FormEvent) => {
+        e.preventDefault();
         deleteFairy();
         nav('/');
     };
