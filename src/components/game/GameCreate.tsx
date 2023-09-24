@@ -87,7 +87,8 @@ const GameCreate = () => {
         },
     });
 
-    const onSubmitHandler = () => {
+    const onSubmitHandler = (e: React.FormEvent) => {
+        e.preventDefault();
         const fairyCreate = {
             name: characterName,
             type: characterType,

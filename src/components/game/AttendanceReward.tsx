@@ -148,7 +148,8 @@ const AttendanceReward = () => {
         },
     });
 
-    const onSubmitHandler = () => {
+    const onSubmitHandler = (e: React.FormEvent) => {
+        e.preventDefault();
         const clearDayOfWeek = missionDayOfWeek[dayOfWeek];
         mutation.mutate(clearDayOfWeek);
         setIsOpen(!isOpen);

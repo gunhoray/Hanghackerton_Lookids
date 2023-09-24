@@ -92,7 +92,8 @@ const LevelUp = () => {
         levelRef.current = level;
     }, [level]);
 
-    const onSubmitHandler = () => {
+    const onSubmitHandler = (e: React.FormEvent) => {
+        e.preventDefault();
         setIsOpen(!isOpen);
     };
 
