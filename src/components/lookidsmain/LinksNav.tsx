@@ -56,7 +56,7 @@ const linkList = [
     },
     {
         name: '패션페어',
-        route: '/test',
+        route: '/',
     },
     {
         name: '올마트',
