@@ -85,9 +85,6 @@ const GameCreate = () => {
         onSuccess: (data) => {
             queryClient.invalidateQueries('user');
         },
-        onError: (error) => {
-            alert('지원되지 않는 환경입니다.');
-        },
     });
 
     const onSubmitHandler = () => {
