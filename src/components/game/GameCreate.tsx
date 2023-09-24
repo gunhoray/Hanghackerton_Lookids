@@ -8,6 +8,7 @@ import Flowery from '../gamecharcter/Folwery';
 import Leafy from '../gamecharcter/Leafy';
 import { createFairy } from '../../apis/fairy';
 import { useMutation, useQueryClient } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 const CharacterList = styled.ul`
     padding: 1.2rem 0.8rem;
     display: flex;
@@ -80,19 +81,24 @@ const GameCreate = () => {
         setCharacterType(type);
     };
     const queryClient = useQueryClient();
-
+    const nav = useNavigate();
     const mutation = useMutation((fairyCreate: fairyProps) => createFairy(fairyCreate), {
         onSuccess: (data) => {
             queryClient.invalidateQueries('user');
+            nav('/game');
+        },
+        onError: (err) => {
+            console.log(err);
         },
     });
 
-    const onSubmitHandler = () => {
+    const onSubmitHandler = async (e: React.FormEvent) => {
+        e.preventDefault();
         const fairyCreate = {
             name: characterName,
             type: characterType,
         };
-        mutation.mutate(fairyCreate);
+        await mutation.mutateAsync(fairyCreate);
     };
     return (
         <>
