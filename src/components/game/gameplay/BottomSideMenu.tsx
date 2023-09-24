@@ -65,15 +65,15 @@ const BottomSideMenu = () => {
                 inventoryToItems: [
                     {
                         name: 'dew',
-                        quantity: 5,
+                        quantity: -1,
                     },
                     {
                         name: 'magicPowder',
-                        quantity: 3,
+                        quantity: -1,
                     },
                     {
                         name: 'heart',
-                        quantity: 1,
+                        quantity: -1,
                     },
                 ],
             }
@@ -122,7 +122,7 @@ const BottomSideMenu = () => {
             <BottomsideMenu>
                 <PlayPageBottomButton
                     onClick={() => onClickHandler('heart')}
-                    disabled={inventoryToItems && inventoryToItems[2].quantity === 0}
+                    disabled={inventoryToItems && inventoryToItems[2].quantity <= 0}
                 >
                     <ButtonBox className="love">
                         <Heart />
@@ -134,7 +134,7 @@ const BottomSideMenu = () => {
                     onClick={() => onClickHandler('magicPowder')}
                     disabled={
                         magicPowderGauge > 90 ||
-                        (inventoryToItems && inventoryToItems[1].quantity === 0)
+                        (inventoryToItems && inventoryToItems[1].quantity <= 0)
                     }
                 >
                     <ButtonBox className="magicpowder">
@@ -146,7 +146,7 @@ const BottomSideMenu = () => {
                 </PlayPageBottomButton>
                 <PlayPageBottomButton
                     onClick={() => onClickHandler('dew')}
-                    disabled={inventoryToItems && inventoryToItems[0].quantity === 0}
+                    disabled={inventoryToItems && inventoryToItems[0].quantity <= 0}
                 >
                     <ButtonBox className="water">
                         <Water />
