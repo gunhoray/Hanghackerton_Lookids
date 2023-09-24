@@ -7,6 +7,7 @@ import useInput from '../../hooks/useInput';
 import Flowery from '../gamecharcter/Folwery';
 import Leafy from '../gamecharcter/Leafy';
 import { createFairy } from '../../apis/fairy';
+import { useMutation, useQueryClient } from 'react-query';
 const CharacterList = styled.ul`
     padding: 1.2rem 0.8rem;
     display: flex;
@@ -64,6 +65,11 @@ export const Form = styled.form`
     gap: 16px;
 `;
 
+type fairyProps = {
+    name: string;
+    type: string;
+};
+
 const GameCreate = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [characterType, setCharacterType] = useState<string>('');
@@ -73,13 +79,23 @@ const GameCreate = () => {
         setIsOpen(!isOpen);
         setCharacterType(type);
     };
+    const queryClient = useQueryClient();
+
+    const mutation = useMutation((fairyCreate: fairyProps) => createFairy(fairyCreate), {
+        onSuccess: (data) => {
+            queryClient.invalidateQueries('user');
+        },
+        onError: (error) => {
+            alert('지원되지 않는 환경입니다.');
+        },
+    });
 
     const onSubmitHandler = () => {
         const fairyCreate = {
             name: characterName,
             type: characterType,
         };
-        createFairy(fairyCreate);
+        mutation.mutate(fairyCreate);
     };
     return (
         <>

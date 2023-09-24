@@ -10,6 +10,7 @@ const ButtonStyle = styled.button`
     margin: 0 auto;
     min-width: 200px;
     border: 2px solid #90ee90;
+    color: #90ee90;
     border-radius: 12px;
     display: block;
     cursor: pointer;
