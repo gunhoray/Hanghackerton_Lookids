@@ -65,15 +65,15 @@ const BottomSideMenu = () => {
                 inventoryToItems: [
                     {
                         name: 'dew',
-                        quantity: -1,
+                        quantity: 1,
                     },
                     {
                         name: 'magicPowder',
-                        quantity: -1,
+                        quantity: 1,
                     },
                     {
                         name: 'heart',
-                        quantity: -1,
+                        quantity: 1,
                     },
                 ],
             }
