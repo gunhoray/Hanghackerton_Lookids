@@ -6,6 +6,7 @@ interface magicMissionState {
         purchase: string;
         attendance: string;
     };
+    share: boolean;
 }
 
 const initialState: magicMissionState = {
@@ -14,6 +15,7 @@ const initialState: magicMissionState = {
         purchase: 'yet',
         attendance: 'yet',
     },
+    share: false,
 };
 
 export type SuccessKeys = 'share' | 'purchase' | 'attendance';
@@ -30,9 +32,16 @@ const magicMissionSlice = createSlice({
             const keyToUpdate = action.payload;
             state.success[keyToUpdate] = 'get-reward';
         },
+        FOCUS_ON_SHARE: (state) => {
+            state.share = true;
+        },
+        FOCUS_OFF_SHARE: (state) => {
+            state.share = false;
+        },
     },
 });
 
-export const { SUCCESS_MISSION, GET_REWARD_MISSION } = magicMissionSlice.actions;
+export const { SUCCESS_MISSION, GET_REWARD_MISSION, FOCUS_ON_SHARE, FOCUS_OFF_SHARE } =
+    magicMissionSlice.actions;
 
 export default magicMissionSlice.reducer;

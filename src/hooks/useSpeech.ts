@@ -4,16 +4,16 @@ import { ADD_SPEECH, CLEAR_SPEECH } from '../redux/modules/speechBubbleSlice';
 const useSpeech = (speechArray: string[]) => {
     const dispatch = useDispatch();
 
-    let timerId: NodeJS.Timeout;
+    let timerSpeechId: NodeJS.Timeout;
 
     const speechEvent = () => {
         const randomIndex = Math.floor(Math.random() * speechArray.length);
         const selectedSpeech = speechArray[randomIndex];
         dispatch(ADD_SPEECH(selectedSpeech));
-        if (timerId) {
-            clearTimeout(timerId);
+        if (timerSpeechId) {
+            clearTimeout(timerSpeechId);
         }
-        timerId = setTimeout(() => {
+        timerSpeechId = setTimeout(() => {
             dispatch(CLEAR_SPEECH());
         }, 3000);
     };

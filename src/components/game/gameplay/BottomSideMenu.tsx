@@ -11,14 +11,14 @@ import Shower from "./Shower";
 
 const BottomsideMenu = styled.div`
   display: flex;
-  margin-top: 80%;
+  margin-top: 20px;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  position: fixed;
+  /* position: fixed;
   bottom: 10vh;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
 `;
 const PlayPageBottomButton = styled.button`
   width: 80px;
@@ -79,7 +79,7 @@ const BottomSideMenu = () => {
       }
     );
   });
-  // console.log(inventoryToItems);
+
   const { magicPowderGauge } = useSelector((state: RootState) => {
     return state.user.data.fairy || { magicPowderGauge: 90 };
   });

@@ -30,6 +30,9 @@ export const GameActionButton = styled.button<styleColor>`
         background-color: red;
         border-radius: 50%;
     }
+    &#shareButton {
+        outline: 3px solid #24ffb0;
+    }
 `;
 
 export const TimerActionButton = styled.button`
@@ -61,8 +64,8 @@ export const RewardList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    & > :nth-child(1),
-    & > :nth-child(2) {
+    & > :nth-child(2),
+    & > :nth-child(3) {
         width: calc(25% - 6px);
     }
 `;

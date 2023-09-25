@@ -12,6 +12,8 @@ import BottomSheet, {
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/config/configStore';
 import {
+    FOCUS_OFF_SHARE,
+    FOCUS_ON_SHARE,
     GET_REWARD_MISSION,
     SUCCESS_MISSION,
     SuccessKeys,
@@ -74,7 +76,9 @@ const MagicpowderReward = () => {
 
     const dispatch = useDispatch();
     const nav = useNavigate();
+
     const shareMissionHandler = () => {
+        dispatch(FOCUS_ON_SHARE());
         setIsOpen(!isOpen);
     };
     const purchaseMissionHandler = () => {
@@ -91,6 +95,7 @@ const MagicpowderReward = () => {
                 <MagicPowder />
                 마법가루
             </GameActionButton>
+
             {isOpen && (
                 <BottomSheet
                     isOpen={isOpen}
