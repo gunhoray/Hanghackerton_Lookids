@@ -85,7 +85,6 @@ const GameCreate = () => {
     const mutation = useMutation((fairyCreate: fairyProps) => createFairy(fairyCreate), {
         onSuccess: (data) => {
             queryClient.invalidateQueries('user');
-            nav('/game');
         },
         onError: (err) => {
             console.log(err);

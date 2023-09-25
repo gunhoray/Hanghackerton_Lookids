@@ -1,46 +1,100 @@
-# Getting Started with Create React App
+# [페어리 키우기] 이커머스 게임화 서비스
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/2a31da10-6504-4f33-9b75-7d6e9e4e2258)
 
-## Available Scripts
+## 📅 프로젝트 기간
 
-In the project directory, you can run:
+-   2023년 9월 18일 ~ 9월 24일 오전 7시 (1주)
 
-### `yarn start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🔎 둘러보기
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+🌐 [배포 사이트](http://101.101.218.26:3000/) <br />
+📁 [발표 자료](https://docs.google.com/presentation/d/1sJR6ke8OsMZpBVlx2tdFcz3wnXIA_d_KvALlRFuOMtU/edit?usp=sharing) <br />
+🎥 [시연 영상](https://www.youtube.com/watch?v=lrDrv1CbPx0) <br />
+🧑‍💻 [BE GIT repository](https://github.com/kids-project/Back-end)
 
-### `yarn test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚢항해커톤
+### 🎯 과제
 
-### `yarn build`
+더이상 유지보수를 진행하지 않는 프로젝트인 ‘룩키즈’ 서비스 개선
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   키즈 패션 공유하기 & 키즈 패션 상품 구매 & 중고거래
+-   원래 자사 서비스인 ‘맘맘’ 에서 디자인을 일부 수정하여 제작하였고, 3개월 가량 기능 추가를 하며 개선하였으나 크게 반응이 없어 일시중지 상태
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    → 룩키즈를 만드는 팀에 배정되었다고 가정하고, ‘룩키즈’를 사용해본 뒤에 ‘룩키즈’ 서비스를 소생시키려면 어떻게 해야할지 고민해보고, 해커톤 기간동안 개선 방향성을 담은 프로젝트 제작
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    <br>
 
-### `yarn eject`
+### ❗️ 문제 정의
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+과제의 지문에서 **'3개월 가량 기능 추가를 하며 개선하였으나 크게 반응이 없어'** 에 주목, 팀에서 룩키즈를 사용해본 경험을 종합하여 문제를 정의
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> 1.  이용자의 `유입 요소`가 미비함
+> 2.  이용자가 서비스에 `오래 머무를 만한 동기` 필요
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 🧭 개선 방향
 
-## Learn More
+문제를 해결하기 위해 **이커머스 게임화 전략** 에 주목 <br />
+룩키즈에 이커머스 게임화 전략을 접목시켜 게임화로 얻을 수 있는 기대효과를 노림
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> 이커머스 게임화 기대효과
+>
+> 1.  가볍고 재미있는 게임으로 `유저 트래픽, 잔존율 증가`
+> 2.  `미션 수행`을 하며 콘텐츠를 보는 시간이 `실제 구매 행위로 이어져 수익성 증가`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br>
+
+### ✅ 해결 제시
+
+룩키즈 게임화 서비스 '페어리 키우기' 개발
+
+> 1.  미션을 통해 플랫폼의 더욱 많은 콘텐츠들에 노출 유도
+> 2.  동기 부여를 통한 재접속 유도
+> 3.  인터랙티브하고 몰입감 있는 경험 제공
+> 4.  소셜 공유 및 사용자 생성 콘텐츠 장려
+
+<br>
+<br>
+
+## 💡 주요 기능
+
+|                                                플랫폼 콘텐츠 유도                                                |                                             특정 페이지 시간 카운트                                              |                                              미션 완료시 toast 알림                                              |                                               누적 접속 시간 미션                                                |
+| :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
+| ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/cdb7766e-ec4c-4702-90dc-726047de1fff) | ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/84de1012-294b-4667-bd97-bb72670d0244) | ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/0d0c2d78-cf6a-4ff5-8302-6dcdad58b335) | ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/4258ed24-0a00-4fdc-a7ef-ed3bb109d71c) |
+
+|                                                    출석 보상                                                     |                                                   캐릭터 육성                                                    |                                                레벨업 포인트 보상                                                |
+| :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
+| ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/f989930a-c66b-494b-8402-d2214b957f2c) | ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/6afc5f2a-d2f4-4966-b2c0-8eba6a215534) | ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/dad57832-6b71-4ae5-8913-8935e7168b95) |
+
+|                                            캐릭터 터치 상호작용 대사                                             |                                           상황에 따라 애니메이션 효과                                            |                                                     공유하기                                                     |
+| :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
+| ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/f027dd72-f74c-4334-9100-1f7b2bd1c4bc) | ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/3cface92-f392-40a2-82d2-55b074436807) | ![image](https://github.com/gunhoray/Hanghackerton_Lookids/assets/84562770/4fa4755c-00a8-46d4-9f7c-8b5075fabd56) |
+
+<br>
+
+## 👨‍👨‍👧‍👧 팀원소개
+
+|  팀원  | 맡은 역할 |
+| :----: | :-------: |
+| 김혜경 | 팀장 & FE |
+| 이건호 |    FE     |
+| 황성원 |    BE     |
+| 송민지 |    BE     |
+
+<br>
+
+## 🔧 기술적 의사 결정
+
+| 사용 기술         | 결정 사유                                                                                                                                                                                                                                         |
+| ----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| styled-components | CSS IN JS로 동적인 스타일링이 가능하며, 재사용 컴포넌트를 구축하는데에 유리. 또, 각 요소마다 고유한 클래스 이름을 부여할 수 있으므로 클래스명 중복으로 인한 스타일링 겹침 문제를 해결하는데에 용이함.                                             |
+| Axios             | axios는 간단하고 직관적인 API를 제공함. 요청과 응답을 받는 과정을 단순화하여 쉽게 데이터를 가져올 수 있어서 사용함.                                                                                                                               |
+| react-query       | 서버와 통신을 주고 받는 부분이 많은 본 프로젝트 특성상 서버 상태 관리에 가장 최적화 된 라이브러리가 필요했으므로 선택을 결정함.                                                                                                                   |
+| Redux             | 유저 정보와 테마 등 전역 상태 관리를 위해 채택함. 최소한의 서버상태 관리만을 하도록 리액트 쿼리와 데이터를 구분하여 관리함.                                                                                                                       |
+| Typescript        | 런타임에러를 컴파일 시점에 잡아낼 수 있어 안정적인 코드 운용이 가능함. 명확한 타입 정보를 제공하여 가독성이 좋기에 프로젝트 규모의 크기를 불문하고 유지보수가 용이함. 또한, JS 라이브러리나 프레임워크를 그대로 사용할 수 있다는 점이 강점이었음. |
